@@ -7,7 +7,7 @@
 <body>
 	<table>
 		<tr>
-			<td widht="30%"><h1>Data Pasien</h1></td>
+			<td widht="30%"><h1>Data Pasien Keryawan</h1></td>
 			<td width="80%" align="right" valign="bottom"><a href="?menu=inputPasien"><h4>Tambah Pasien</h4></a></td>
 		</tr>
 	</table>

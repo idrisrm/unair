@@ -51,7 +51,7 @@
 
 	 			switch(@$_GET['indek']){
 	  			default:
-	 			 echo"<div align='center'>
+	 			 echo"<div align='center' style='margin-top:100px'>
 				  <img src='img/LOGOUNAIR.jpeg' width='250'>
 				  <img src='img/LOGOVOKASI.png' width='250'>
   					</div>";

@@ -1,7 +1,7 @@
 <?php
 
-	mysql_connect("localhost", "root", "");
-	mysql_select_db("rekam_medis");
+	mysqli_connect("localhost", "root", "", "rekam_medis");
+	// mysqli_select_db("rekam_medis");
 
 ?>
 <!DOCTYPE html>
@@ -46,15 +46,15 @@
 
 <div class="container">
   <?php
-	mysql_connect("localhost", "root", "");
-	mysql_select_db("rekam_medis");
+	mysqli_connect("localhost", "root", "", "rekam_medis");
+	// mysql_select_db("rekam_medis");
 
 	 			switch(@$_GET['indek']){
 	  			default:
-	 			 echo"<div align='center'><p><img src='img/1.png' width='250'></p>
-  <p><h2><b>Pusat Layanan Kesehatan</b></h2></p>
-  <p><h2><b>Universitas AirLangga </b></h2></p>
-  </div>";
+	 			 echo"<div align='center'>
+				  <img src='img/LOGOUNAIR.jpeg' width='250'>
+				  <img src='img/LOGOVOKASI.png' width='250'>
+  					</div>";
 	   				  break;
 				//profil
 				case'profil';

@@ -1,7 +1,7 @@
 <?php
 
-	mysql_connect("localhost", "root", "");
-	mysql_select_db("rekam_medis");
+	mysqli_connect("localhost", "root", "", "rekam_medis");
+	// mysqli_select_db("rekam_medis");
 
   if(isset($_POST['log'])) {
     $nama_user  = @$_POST['user'];
@@ -9,9 +9,9 @@
 
     //$enkrip     = md5($pswd);
 
-    $sql  = mysql_query("SELECT * FROM user WHERE pengguna='$nama_user' and sandi='$pswd'");
-    $row  = mysql_fetch_row($sql);
-	  $bc		= mysql_fetch_array($sql);
+    $sql  = mysqli_query($kon, "SELECT * FROM user WHERE pengguna='$nama_user' and sandi='$pswd'");
+    $row  = mysqli_fetch_row($sql);
+	  $bc		= mysqli_fetch_array($sql);
 
       if($row > 0){
         session_start();

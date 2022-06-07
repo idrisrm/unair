@@ -1,7 +1,7 @@
 <?php
 
-mysql_connect("localhost", "root", "");
-mysql_select_db("rekam_medis");
+mysqli_connect("localhost", "root", "", "rekam_medis");
+// mysql_select_db("rekam_medis");
 
 ?>
 <!DOCTYPE html>
@@ -33,9 +33,6 @@ mysql_select_db("rekam_medis");
     <div class="col-md-4 col-md-offset-4">
         <div align="center"><img src="img/1.png" width="232" height="243"> </div>
         <h3 align="center">
-            Pusat Layanan Kesehatan Rawat Jalan
-            Klinik UNAIR
-            Universitas AirLangga
         </h3>
         <div class="login-panel panel panel-default">
             <div class="panel-heading">

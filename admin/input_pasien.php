@@ -90,9 +90,7 @@
 
                <div class="row">
                     <div class="col-lg-12">
-                         <button type="button" class="btn btn-primary" >
-                              Selesai
-                         </button>
+                         <a class="btn btn-primary" href="?menu=resi">Selesai</a>
                     </div>
                </div>
 

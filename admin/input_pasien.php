@@ -9,7 +9,7 @@
      }
 </style>
 
-<div class="panel-body">
+<div class="panel-body" style="background-color: #f5f5f5;">
      <div class="row">
           <div class="col-lg-12">
                <form>
@@ -53,61 +53,6 @@
                               <input class="form-control" placeholder="Enter Number" type="number" name="jumlah_item" required>
                          </div>
                     </div>
-                    <!-- <div class="row">
-                         <div class="col-md-6 marginku">
-                              <label>Jenis Kelamin</label>
-                              <select name="jk_dokter" class="form-control" required>
-                                   <option value="">Pilih Salah Satu</option>
-                                   <option value="Laki-laki">Laki-laki</option>
-                                   <option value="Perempuan">Perempuan</option>
-                              </select>
-                         </div>
-                         <div class="col-md-6 marginku">
-                              <label>Rawat Inap</label>
-                              <input class="form-control" placeholder="Enter text" name="umur" required>
-                         </div>
-                    </div>
-                    <div class="row">
-                         <div class="col-md-6 marginku">
-                              <label>Pekerjaan</label>
-                              <input class="form-control" placeholder="Enter text" name="umur" required>
-                         </div>
-                         <div class="col-md-6 marginku">
-                              <label>Komplikasi</label>
-                              <input class="form-control" placeholder="Enter text" name="umur" required>
-                         </div>
-                    </div>
-                    <div class="row">
-                         <div class="col-md-6 marginku">
-                              <label>No Telepon</label>
-                              <input class="form-control" placeholder="Enter text" name="umur" type="number" required>
-                         </div>
-                         <div class="col-md-6 marginku">
-                              <label>Tindakan</label>
-                              <input class="form-control" placeholder="Enter text" name="umur" required>
-                         </div>
-                    </div>
-                    <div class="row">
-                         <div class="col-md-6 marginku">
-                              <label>Alamat</label>
-                              <textarea class="form-control" placeholder="Enter text" name="alamat_dokter" required>
-                         </textarea>
-                         </div>
-                         <div class="col-md-6 marginku">
-                              <label>Keadaan</label>
-                              <select name="jk_dokter" class="form-control" required>
-                                   <option value="">Pilih Salah Satu</option>
-                                   <option value="Laki-laki">Laki-laki</option>
-                                   <option value="Perempuan">Perempuan</option>
-                              </select>
-                         </div>
-                    </div> -->
-                    <!-- <div class="row">
-                         <div class="col-md-12 marginku">
-                              <a href="?menu=resi" class="btn btn-primary">Submit</a>
-                         </div>
-                    </div> -->
-
                </form>
 
                <div class="row">
@@ -143,12 +88,13 @@
                     </tbody>
                </table>
 
-               <!-- modal -->
-               <!-- Button trigger modal -->
-
-               <!-- Modal -->
-               <!-- Button trigger modal -->
-
+               <div class="row">
+                    <div class="col-lg-12">
+                         <button type="button" class="btn btn-primary" >
+                              Selesai
+                         </button>
+                    </div>
+               </div>
 
                <!-- Modal -->
                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -225,90 +171,6 @@
                          </div>
                     </div>
                </div>
-
-
-               <!-- <form role="form" enctype="multipart/form-data" method="POST" action="<?php $_SERVER['PHP_SELF']; ?>">
-                    <div class="form-group">
-                         <label>Nama Pasien</label>
-                         <input class="form-control" placeholder="Enter text" name="nama_dokter" required>
-                    </div>
-
-                    <div class="form-group">
-                         <label>Tanggal Lahir </label>
-                         <input class="form-control" type="date" name="tgl_lahir" required>
-                         <p class="help-block">Masukkan Tanggal Lahir</p>
-                    </div>
-
-                    <div class="form-group">
-                         <label>Jenis Kelamin</label>
-                         <select name="jk_dokter" class="form-control" required>
-                              <option value="">Pilih Salah Satu</option>
-                              <option value="Laki-laki">Laki-laki</option>
-                              <option value="Perempuan">Perempuan</option>
-                         </select>
-                    </div>
-                    <div class="form-group">
-                         <label>Pekerjaan</label>
-                         <input class="form-control" placeholder="Enter text" name="umur" required>
-                    </div>
-
-                    <div class="form-group">
-                         <label>No. Tlp</label>
-                         <input class="form-control" placeholder="Enter text" name="umur" required>
-                    </div>
-
-                    <div class="form-group">
-                         <label>Alamat</label>
-                         <textarea class="form-control" placeholder="Enter text" name="alamat_dokter" required>
-                   </textarea>
-                    </div>
-
-                    <button type="submit" class="btn btn-outline btn-info" name="kirim">Simpan <i class="fa fa-save fa-fw"></i></button>
-
-
-          </div>
-
-          
-          <div class="col-lg-6">
-
-               <div class="form-group">
-                    <label>Status</label>
-                    <select name="jk_dokter" class="form-control" required>
-                         <option value="">Pilih Salah Satu</option>
-                         <option value="Laki-laki">1. Suami / Istri</option>
-                         <option value="Perempuan">2. Anak</option>
-                    </select>
-               </div>
-
-               <div class="form-group">
-                    <label>Diagnosa</label>
-                    <input class="form-control" placeholder="Enter text" name="umur" required>
-               </div>
-               <div class="form-group">
-                    <label>Rawat Inap</label>
-                    <input class="form-control" placeholder="Enter text" name="umur" required>
-               </div>
-               <div class="form-group">
-                    <label>Komplikasi</label>
-                    <input class="form-control" placeholder="Enter text" name="umur" required>
-               </div>
-               <div class="form-group">
-                    <label>Tindakan/Operasi</label>
-                    <input class="form-control" placeholder="Enter text" name="umur" required>
-               </div>
-
-               <div class="form-group">
-                    <label>Keadaan</label>
-                    <select name="jk_dokter" class="form-control" required>
-                         <option value="">Pilih Salah Satu</option>
-                         <option value="Laki-laki">1. Sembuh</option>
-                         <option value="Perempuan">2. Membaik</option>
-                         <option value="Perempuan">3. Belum Sembuh</option>
-                         <option value="Perempuan">4. Meninggal</option>
-                    </select>
-               </div>
-
-               </form> -->
 
           </div>
           <!-- /.col-lg-6 (nested) -->

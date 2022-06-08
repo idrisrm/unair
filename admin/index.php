@@ -121,6 +121,11 @@ include "../config/koneksi.php";
               include 'laporan_lengkap.php';
               break;
 
+              //resi 
+            case 'resi':
+              include 'resi.php';
+              break;
+
             default:
           ?>
               <div class="col-lg-12">

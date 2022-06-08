@@ -89,7 +89,7 @@
                     </div>
                     <div class="row">
                          <div class="col-md-12 marginku">
-                              <button type="submit" class="btn btn-primary">Submit</button>
+                              <a href="?menu=resi" class="btn btn-primary">Submit</a>
                          </div>
                     </div>
 

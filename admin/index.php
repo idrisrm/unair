@@ -15,7 +15,7 @@ include "../config/koneksi.php";
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Selamat Datang di Kampus UNAIR </title>
+  <title>Selamat Datang di Kampus UNAIR</title>
 
   <!-- Bootstrap Core CSS -->
   <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -57,6 +57,9 @@ include "../config/koneksi.php";
               //dokter
             case 'dokter':
               include 'prev_dokter.php';
+              break;
+            case 'inputPasien':
+              include 'input_pasien.php';
               break;
             case 'inputDokter':
               include 'input_dokter.php';

@@ -33,7 +33,7 @@
     <ul class="nav navbar-nav">
       <li><a href="index.php">Home</a></li>
       <!--<li><a href="?indek=profil">Profil</a></li> -->
-      <li><a href="?indek=vdm">Visi dan Misi aunair</a></li>
+      <li><a href="?indek=vdm">Visi dan Misi unair</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
 

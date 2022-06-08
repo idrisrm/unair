@@ -2,11 +2,10 @@
      <div class="col-lg-12">
           <h1 class="page-header">Halaman Input Data Pasien</h1>
      </div>
-
 </div>
 <style type="text/css">
      .marginku {
-          margin-bottom: 10px;
+          margin-bottom: 0px;
      }
 </style>
 
@@ -15,30 +14,46 @@
           <div class="col-lg-12">
                <form>
                     <div class="row">
-                         <div class="col-md-6 marginku">
-                              <label>Nama Pasien</label>
-                              <input class="form-control" placeholder="Enter text" name="nama_dokter" required>
+                         <div class="col-md-1 marginku">
+                              <label>Nomor</label>
+                              <input class="form-control" type="text" value="JPP799" name="nomor" required readonly>
                          </div>
-                         <div class="col-md-6 marginku">
-                              <label>Status</label>
+                         <div class="col-md-2 marginku">
+                              <label>Tanggal</label>
+                              <input class="form-control" type="date" name="tanggal_input" required>
+                         </div>
+                         <div class="col-md-3 marginku">
+                              <label>Jenis Penggantian</label>
+                              <select name="jenis" class="form-control" required>
+                                   <option value="" selected>-- Pilih Salah Satu --</option>
+                                   <option value="">Perorangan</option>
+                                   <option value="">Fasilitas Kantor</option>
+                              </select>
+                         </div>
+                         <div class="col-md-2 marginku">
+                              <label>Unit Sub</label>
+                              <input class="form-control" type="text" value="Keuangan" name="unit" required readonly>
+                         </div>
+                         <div class="col-md-4 marginku">
+                              <label>Penerima</label>
                               <select name="jk_dokter" class="form-control" required>
-                                   <option value="">Pilih Salah Satu</option>
-                                   <option value="Laki-laki">menikah</option>
-                                   <option value="Perempuan">Belum menikah</option>
+                                   <option value="">-- Pilih Salah Satu --</option>
+                                   <option value="">Hofidatul</option>
+                                   <option value="">Nova Ayu</option>
                               </select>
                          </div>
                     </div>
                     <div class="row">
-                         <div class="col-md-6 marginku">
-                              <label>Tanggal Lahir </label>
-                              <input class="form-control" type="date" name="tgl_lahir" required>
+                         <div class="col-md-11 marginku">
+                              <label>Uraian</label>
+                              <input class="form-control" placeholder="Enter Text" type="text" name="uraian" required>
                          </div>
-                         <div class="col-md-6 marginku">
-                              <label>Diagnoasa </label>
-                              <input class="form-control" type="text" placeholder="Enter text" name="tgl_lahir" required>
+                         <div class="col-md-1 marginku">
+                              <label>Jumlah Item</label>
+                              <input class="form-control" placeholder="Enter Number" type="number" name="jumlah_item" required>
                          </div>
                     </div>
-                    <div class="row">
+                    <!-- <div class="row">
                          <div class="col-md-6 marginku">
                               <label>Jenis Kelamin</label>
                               <select name="jk_dokter" class="form-control" required>
@@ -86,14 +101,132 @@
                                    <option value="Perempuan">Perempuan</option>
                               </select>
                          </div>
-                    </div>
-                    <div class="row">
+                    </div> -->
+                    <!-- <div class="row">
                          <div class="col-md-12 marginku">
                               <a href="?menu=resi" class="btn btn-primary">Submit</a>
                          </div>
-                    </div>
+                    </div> -->
 
                </form>
+
+               <div class="row">
+                    <div class="col-lg-12">
+                         <h4 class="page-header">Data Item Biaya Kesehatan</h4>
+                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                              Tambah
+                         </button>
+                    </div>
+               </div>
+               <table class="table">
+                    <thead>
+                         <tr>
+                              <th>No.</th>
+                              <th>Jenis Biaya</th>
+                              <th>Tanggal</th>
+                              <th>Pasien</th>
+                              <th>Uraian</th>
+                              <th>Biaya</th>
+                              <th>Aksi</th>
+                         </tr>
+                    </thead>
+                    <tbody>
+                         <tr>
+                              <td>1</td>
+                              <td>Penggantian</td>
+                              <td>25 Mei 2022</td>
+                              <td>Hofidatul</td>
+                              <td>sakit demam</td>
+                              <td>Rp. 4.000.000</td>
+                              <td> Edit | hapus</td>
+                         </tr>
+                    </tbody>
+               </table>
+
+               <!-- modal -->
+               <!-- Button trigger modal -->
+
+               <!-- Modal -->
+               <!-- Button trigger modal -->
+
+
+               <!-- Modal -->
+               <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                         <div class="modal-content">
+                              <div class="modal-header">
+                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                   <h4 class="modal-title" id="myModalLabel">Tambah Item Biaya Kesehatan</h4>
+                              </div>
+                              <div class="modal-body">
+                                   <form>
+                                        <div class="row">
+                                             <div class="col-md-2 marginku">
+                                                  <label>No Item</label>
+                                                  <input class="form-control" type="number" name="noitem" required value="1" readonly>
+                                             </div>
+                                             <div class="col-md-5 marginku">
+                                                  <label>Jenis Biaya</label>
+                                                  <select name="jenis" class="form-control" required>
+                                                       <option value="" selected>-- Pilih Salah Satu --</option>
+                                                       <option value="">Biaya Pemeriksaan</option>
+                                                       <option value="">Biaya Inap</option>
+                                                  </select>
+                                             </div>
+                                             <div class="col-md-5 marginku">
+                                                  <label>Tanggal Terima</label>
+                                                  <input class="form-control" type="date" name="tanggal_periksa" required>
+                                             </div>
+                                        </div>
+                                        <div class="row">
+                                             <div class="col-md-4 marginku">
+                                                  <label>Tanggal periksa</label>
+                                                  <input class="form-control" type="date" name="tanggal_periksa" required>
+                                             </div>
+                                             <div class="col-md-4 marginku">
+                                                  <label>pasien</label>
+                                                  <select name="jenis" class="form-control" required>
+                                                       <option value="" selected>-- Pilih Salah Satu --</option>
+                                                       <option value="">Hofidatul</option>
+                                                       <option value="">Nova Ayu</option>
+                                                  </select>
+                                             </div>
+                                             <div class="col-md-4 marginku">
+                                                  <label>Dokter</label>
+                                                  <select name="jenis" class="form-control" required>
+                                                       <option value="" selected>-- Pilih Salah Satu --</option>
+                                                       <option value="">Armani</option>
+                                                       <option value="">Sung</option>
+                                                  </select>
+                                             </div>
+                                        </div>
+                                        <div class="row">
+                                             <div class="col-md-12 marginku">
+                                                  <label>Uraian</label>
+                                                  <input class="form-control" type="text" name="uraian" required>
+                                             </div>
+                                        </div>
+                                        <div class="row">
+                                             <div class="col-md-6 marginku">
+                                                  <label>Penyakit</label>
+                                                  <input class="form-control" type="text" name="penyakit" required>
+                                             </div>
+                                             <div class="col-md-6 marginku">
+                                                  <label>Biaya</label>
+                                                  <input class="form-control" type="text" name="biaya" required>
+                                             </div>
+                                        </div>
+                                   </form>
+                              </div>
+                              <div class="modal-footer">
+                                   <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                                   <button type="button" class="btn btn-primary">Tambah</button>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+
+
                <!-- <form role="form" enctype="multipart/form-data" method="POST" action="<?php $_SERVER['PHP_SELF']; ?>">
                     <div class="form-group">
                          <label>Nama Pasien</label>

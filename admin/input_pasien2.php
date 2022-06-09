@@ -1,3 +1,28 @@
+<?php
+
+include '../config/koneksi.php';
+
+$id = $_GET['id'];
+
+// if ($id) {
+//      echo '<script language="javascript">
+// alert ("ada ' . $id . '");
+// </script>';
+// } else {
+//      echo '<script language="javascript">
+// alert ("tidak ada");
+// </script>';
+// }
+
+$ambildata = mysqli_query($kon, "SELECT * FROM tb_pasien join tb_karyawan on tb_karyawan.id = tb_pasien.id_karyawan join unit_sub on unit_sub.id = tb_pasien.id_sub WHERE nomor_pasien = '$id'");
+$data = mysqli_fetch_array($ambildata);
+
+
+// var_dump($data2);die;
+
+?>
+
+
 <div class="row">
      <div class="col-lg-12">
           <h1 class="page-header">Halaman Input Data Pasien</h1>
@@ -12,45 +37,37 @@
 <div class="panel-body" style="background-color: #f5f5f5;">
      <div class="row">
           <div class="col-lg-12">
-               <form action="../config/insertpasien.php" method="POST">
+               <form action="../config/insertpasien2.php" method="POST">
                     <div class="row">
                          <div class="col-md-1 marginku">
                               <label>Nomor</label>
-                              <input class="form-control" type="text" value="JPP799" name="nomor" required readonly>
+                              <input class="form-control" type="text" value="<?= $data['nomor_pasien'] ?>" name="nomor" required readonly>
                          </div>
                          <div class="col-md-2 marginku">
                               <label>Tanggal</label>
-                              <input class="form-control" type="date" name="tanggal_input" required>
+                              <input class="form-control" type="date" name="tanggal_input" value="<?= $data['tanggal_daftar'] ?>" required readonly>
                          </div>
                          <div class="col-md-3 marginku">
                               <label>Jenis Penggantian</label>
-                              <select name="jenis_penggantian" class="form-control" required>
-                                   <option value="" selected>-- Pilih Salah Satu --</option>
-                                   <option value="1">Perorangan</option>
-                                   <option value="2">Fasilitas Kantor</option>
-                              </select>
+                              <input class="form-control" type="text" name="tanggal_input" value="<?= $data['jenis_penggantian'] == 1 ? "Perorangan" : "Fasilitas Kantor" ?>" required readonly>
                          </div>
                          <div class="col-md-2 marginku">
                               <label>Unit Sub</label>
-                              <input class="form-control" type="text" value="1" name="id_sub" required readonly>
+                              <input class="form-control" type="text" value="<?= $data['nama_sub'] ?>" name="id_sub" required readonly>
                          </div>
                          <div class="col-md-4 marginku">
                               <label>Penerima</label>
-                              <select name="karyawan" class="form-control" required>
-                                   <option value="">-- Pilih Salah Satu --</option>
-                                   <option value="1">Hofidatul</option>
-                                   <option value="2">Nova Ayu</option>
-                              </select>
+                              <input class="form-control" type="text" value="<?= $data['nama_karyawan'] ?>" name="id_sub" required readonly>
                          </div>
                     </div>
                     <div class="row">
                          <div class="col-md-11 marginku">
                               <label>Uraian</label>
-                              <input class="form-control" placeholder="Enter Text" type="text" name="uraian" required>
+                              <input class="form-control" placeholder="Enter Text" type="text" name="uraian" value="<?= $data['uraian'] ?>" required readonly>
                          </div>
                          <div class="col-md-1 marginku">
                               <label>Jumlah Item</label>
-                              <input class="form-control" placeholder="Enter Number" type="number" name="jumlah_item" required>
+                              <input class="form-control" placeholder="Enter Number" value="<?= $data['jumlah_item'] ?>" type="number" name="jumlah_item" required readonly>
                          </div>
                     </div>
                     <!-- Modal -->
@@ -149,24 +166,29 @@
                          </tr>
                     </thead>
                     <tbody>
-                         <tr>
-                              <!-- <td>1</td>
-                              <td>Penggantian</td>
-                              <td>25 Mei 2022</td>
-                              <td>Hofidatul</td>
-                              <td>sakit demam</td>
-                              <td>Rp. 4.000.000</td>
-                              <td> Edit | hapus</td> -->
-                         </tr>
+                         <?php
+                         $ambildata2 = mysqli_query($kon, "SELECT * FROM detail_pasien join tb_karyawan on tb_karyawan.id = detail_pasien.id_pasien join tb_dokter on tb_dokter.id_dokter = detail_pasien.id_dokter WHERE nomor_pasien = '$id'");
+                         $no = 1;
+                         while ($data2 = mysqli_fetch_array($ambildata2)) { ?>
+                              <tr>
+                                   <td><?= $no?></td>
+                                   <td><?= $data2['jenis_biaya'] == 1? "Perorangan" : "Fasilitas kantor" ?></td>
+                                   <td><?= $data2['tanggal_periksa']?></td>
+                                   <td><?= $data2['nama_karyawan']?></td>
+                                   <td><?= $data2['uraian']?></td>
+                                   <td>Rp. <?= $data2['biaya']?></td>
+                                   <td> Edit | hapus</td>
+                              </tr>
+                         <?php $no++; } ?>
                     </tbody>
                </table>
 
-               <!-- <div class="row">
+               <div class="row">
                     <div class="col-lg-12">
                          <a class="btn btn-primary" href="">Simpan</a>
                          <a class="btn btn-default" href="?menu=resi">Selesai</a>
                     </div>
-               </div> -->
+               </div>
 
 
 
@@ -195,54 +217,7 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="../dist/js/sb-admin-2.js"></script>
-<?php
 
-include '../config/koneksi.php';
-
-@$nomor_pasien     = $_POST['nomor'];
-@$id_sub            = $_POST['id_sub'];
-@$id_karyawan       = $_POST['karyawan'];
-@$tanggal_daftar          = $_POST['tanggal_input'];
-@$uraian        = $_POST['uraian'];
-@$jumlah_item           = $_POST['jumlah_item'];
-@$status           = "1";
-
-@$jenis_biaya     = $_POST['jenis_biaya'];
-@$tanggal_terima            = $_POST['tanggal_terima'];
-@$tanggal_periksa       = $_POST['tanggal_periksa'];
-@$id_pasien          = $_POST['id_pasien'];
-@$id_dokter        = $_POST['id_dokter'];
-@$uraian           = $_POST['uraian_pasien'];
-@$penyakit           = $_POST['penyakit'];
-@$biaya           = $_POST['biaya'];
-
-
-
-if (isset($_POST['kirim'])) {
-     // $sql3 = mysqli_query($kon, "SELECT max(id_dokter) as id_dokter FROM tb_dokter");
-     // $bc3  = mysqli_fetch_array($sql3);
-     // @$id_dokter = $bc3['id_dokter'] + 1;
-     // echo "$id_dokter";
-
-     $sql1 = "INSERT INTO tb_pasien VALUES ('', '$nomor_pasien', '$id_sub',  '$id_karyawan', '$tanggal_daftar', '$uraian', '$jumlah_item', '1')";
-     mysqli_query($kon, $sql1);
-
-     $sql2 = "INSERT INTO detail_pasien VALUES ('', '$nomor_pasien', '$jenis_biaya',  '$tanggal_terima', '$tanggal_periksa', '$id_pasien', '$id_dokter', '$uraian', $penyakit, $biaya)";
-     mysqli_query($kon, $sql2);
-
-     echo '<script language="javascript">
-alert ("Data Berhasil Disimpan");
-</script>';
-
-
-?>
-     <script type="text/javascript">
-          //window.location ="?menu=dokter" ;
-     </script>
-<?php
-     // header('location:?menu=dokter');
-}
-?>
 </body>
 
 </html>

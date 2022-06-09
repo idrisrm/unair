@@ -6,7 +6,7 @@
 </div>
 <style type="text/css">
      .marginku {
-          margin-bottom: 10px;
+          margin-bottom: 3px;
      }
 </style>
 
@@ -15,167 +15,46 @@
           <div class="col-lg-12">
                <form>
                     <div class="row">
-                         <div class="col-md-6 marginku">
-                              <label>Nama Pasien</label>
+                         <div class="col-md-4 marginku">
+                              <label>Nama Dokter</label>
                               <input class="form-control" placeholder="Enter text" name="nama_dokter" required>
                          </div>
-                         <div class="col-md-6 marginku">
-                              <label>Status</label>
-                              <select name="jk_dokter" class="form-control" required>
-                                   <option value="">Pilih Salah Satu</option>
-                                   <option value="Laki-laki">menikah</option>
-                                   <option value="Perempuan">Belum menikah</option>
-                              </select>
+                         <div class="col-md-4 marginku">
+                              <label>No. STR </label>
+                              <input class="form-control" type="number" placeholder="Enter Number" name="str" required>
                          </div>
-                    </div>
-                    <div class="row">
-                         <div class="col-md-6 marginku">
-                              <label>Tanggal Lahir </label>
-                              <input class="form-control" type="date" name="tgl_lahir" required>
-                         </div>
-                         <div class="col-md-6 marginku">
-                              <label>Diagnoasa </label>
-                              <input class="form-control" type="text" placeholder="Enter text" name="tgl_lahir" required>
-                         </div>
-                    </div>
-                    <div class="row">
-                         <div class="col-md-6 marginku">
+                         <div class="col-md-4 marginku">
                               <label>Jenis Kelamin</label>
                               <select name="jk_dokter" class="form-control" required>
-                                   <option value="">Pilih Salah Satu</option>
-                                   <option value="Laki-laki">Laki-laki</option>
+                                   <option value="">-- Pilih Salah Satu --</option>
+                                   <option value="Laki-laki">Laki-Laki</option>
                                    <option value="Perempuan">Perempuan</option>
                               </select>
                          </div>
-                         <div class="col-md-6 marginku">
-                              <label>Rawat Inap</label>
-                              <input class="form-control" placeholder="Enter text" name="umur" required>
-                         </div>
+
                     </div>
                     <div class="row">
                          <div class="col-md-6 marginku">
-                              <label>Pekerjaan</label>
-                              <input class="form-control" placeholder="Enter text" name="umur" required>
-                         </div>
-                         <div class="col-md-6 marginku">
-                              <label>Komplikasi</label>
-                              <input class="form-control" placeholder="Enter text" name="umur" required>
-                         </div>
-                    </div>
-                    <div class="row">
-                         <div class="col-md-6 marginku">
-                              <label>No Telepon</label>
-                              <input class="form-control" placeholder="Enter text" name="umur" type="number" required>
-                         </div>
-                         <div class="col-md-6 marginku">
-                              <label>Tindakan</label>
-                              <input class="form-control" placeholder="Enter text" name="umur" required>
-                         </div>
-                    </div>
-                    <div class="row">
-                         <div class="col-md-6 marginku">
-                              <label>Alamat</label>
-                              <textarea class="form-control" placeholder="Enter text" name="alamat_dokter" required>
-                         </textarea>
-                         </div>
-                         <div class="col-md-6 marginku">
-                              <label>Keadaan</label>
+                              <label>Specialist</label>
                               <select name="jk_dokter" class="form-control" required>
-                                   <option value="">Pilih Salah Satu</option>
-                                   <option value="Laki-laki">Laki-laki</option>
-                                   <option value="Perempuan">Perempuan</option>
+                                   <option value="">-- Pilih Salah Satu --</option>
+                                   <option value="">Dokter Umum</option>
+                                   <option value="">Dokter Bedah</option>
+                                   <option value="">Psikiater</option>
                               </select>
                          </div>
+                         <div class="col-md-6 marginku">
+                              <label>Tempat Praktik</label>
+                              <input class="form-control" placeholder="Enter text" name="umur" required>
+                         </div>
                     </div>
-                    <div class="row">
-                         <div class="col-md-12 marginku">
-                              <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="row marginku">
+                         <div class="col-lg-12">
+                              <button type="submit" class="btn btn-primary" name="kirim">Submit</button>
                          </div>
                     </div>
 
                </form>
-               <!-- <form role="form" enctype="multipart/form-data" method="POST" action="<?php $_SERVER['PHP_SELF']; ?>">
-                    <div class="form-group">
-                         <label>Nama Pasien</label>
-                         <input class="form-control" placeholder="Enter text" name="nama_dokter" required>
-                    </div>
-
-                    <div class="form-group">
-                         <label>Tanggal Lahir </label>
-                         <input class="form-control" type="date" name="tgl_lahir" required>
-                         <p class="help-block">Masukkan Tanggal Lahir</p>
-                    </div>
-
-                    <div class="form-group">
-                         <label>Jenis Kelamin</label>
-                         <select name="jk_dokter" class="form-control" required>
-                              <option value="">Pilih Salah Satu</option>
-                              <option value="Laki-laki">Laki-laki</option>
-                              <option value="Perempuan">Perempuan</option>
-                         </select>
-                    </div>
-                    <div class="form-group">
-                         <label>Pekerjaan</label>
-                         <input class="form-control" placeholder="Enter text" name="umur" required>
-                    </div>
-
-                    <div class="form-group">
-                         <label>No. Tlp</label>
-                         <input class="form-control" placeholder="Enter text" name="umur" required>
-                    </div>
-
-                    <div class="form-group">
-                         <label>Alamat</label>
-                         <textarea class="form-control" placeholder="Enter text" name="alamat_dokter" required>
-                   </textarea>
-                    </div>
-
-                    <button type="submit" class="btn btn-outline btn-info" name="kirim">Simpan <i class="fa fa-save fa-fw"></i></button>
-
-
-          </div>
-
-          
-          <div class="col-lg-6">
-
-               <div class="form-group">
-                    <label>Status</label>
-                    <select name="jk_dokter" class="form-control" required>
-                         <option value="">Pilih Salah Satu</option>
-                         <option value="Laki-laki">1. Suami / Istri</option>
-                         <option value="Perempuan">2. Anak</option>
-                    </select>
-               </div>
-
-               <div class="form-group">
-                    <label>Diagnosa</label>
-                    <input class="form-control" placeholder="Enter text" name="umur" required>
-               </div>
-               <div class="form-group">
-                    <label>Rawat Inap</label>
-                    <input class="form-control" placeholder="Enter text" name="umur" required>
-               </div>
-               <div class="form-group">
-                    <label>Komplikasi</label>
-                    <input class="form-control" placeholder="Enter text" name="umur" required>
-               </div>
-               <div class="form-group">
-                    <label>Tindakan/Operasi</label>
-                    <input class="form-control" placeholder="Enter text" name="umur" required>
-               </div>
-
-               <div class="form-group">
-                    <label>Keadaan</label>
-                    <select name="jk_dokter" class="form-control" required>
-                         <option value="">Pilih Salah Satu</option>
-                         <option value="Laki-laki">1. Sembuh</option>
-                         <option value="Perempuan">2. Membaik</option>
-                         <option value="Perempuan">3. Belum Sembuh</option>
-                         <option value="Perempuan">4. Meninggal</option>
-                    </select>
-               </div>
-
-               </form> -->
 
           </div>
           <!-- /.col-lg-6 (nested) -->

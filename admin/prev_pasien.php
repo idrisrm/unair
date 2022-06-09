@@ -18,10 +18,6 @@
 				<th>No.</th>
 				<th>Nomor Pasien</th>
 				<th>Nama Pasien</th>
-				<th>Umur</th>
-				<th>Jenis Kelamin</th>
-				<th>Tanggal Lahir</th>
-				<th>Alamat</th>
 				<th>Tanggal Daftar</th>
 				<th>Pilihan</th>
 			</tr>
@@ -36,14 +32,10 @@
 			<tbody>
 				<tr>
 					<td><?php echo "$no"; ?></td>
-					<td><?php echo "No : $bc[id_pasien] <br> NIK : $bc[nik_pasien]"; ?></td>
+					<td><?php echo "$bc[nomer_pasien]"; ?></td>
 					<td><?php echo "
 
 				$bc[nama_pasien]"; ?></td>
-					<td><?php echo "$bc[umur]"; ?></td>
-					<td><?php echo "$bc[jk]"; ?></td>
-					<td><?php echo "$bc[tgl_lahir]"; ?></td>
-					<td><?php echo "$bc[alamat_pasien]"; ?></td>
 					<td><?php echo "$bc[tgl_daftar]"; ?></td>
 					<td>
 						<a href="?menu=editPasien&id=<?php echo "$bc[id_pasien]"; ?>">

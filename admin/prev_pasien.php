@@ -25,18 +25,18 @@
 		<?php
 		include '../config/koneksi.php';
 		$no = 0;
-		$sql = mysqli_query($kon, "SELECT * FROM tb_pasien WHERE stts='1'  ORDER BY id_pasien desc ");
+		$sql = mysqli_query($kon, "SELECT * FROM detail_pasien join tb_karyawan on tb_karyawan.id = detail_pasien.id_pasien join tb_dokter on tb_dokter.id_dokter = detail_pasien.id_dokter");
 		while ($bc = mysqli_fetch_array($sql)) {
 			$no++;
 		?>
 			<tbody>
 				<tr>
 					<td><?php echo "$no"; ?></td>
-					<td><?php echo "$bc[nomer_pasien]"; ?></td>
+					<td><?php echo "$bc[nomor_pasien]"; ?></td>
 					<td><?php echo "
 
-				$bc[nama_pasien]"; ?></td>
-					<td><?php echo "$bc[tgl_daftar]"; ?></td>
+				$bc[nama_karyawan]"; ?></td>
+					<td><?php echo "$bc[tanggal_terima]"; ?></td>
 					<td>
 						<a href="?menu=editPasien&id=<?php echo "$bc[id_pasien]"; ?>">
 							<i class="glyphicon glyphicon-pencil"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;

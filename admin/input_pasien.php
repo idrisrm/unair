@@ -105,17 +105,17 @@
                                         <div class="row">
                                              <div class="col-md-12 marginku">
                                                   <label>Uraian</label>
-                                                  <input class="form-control" type="text" name="uraian_pasien" required>
+                                                  <input class="form-control" placeholder="Enter Text" type="text" name="uraian_pasien" required>
                                              </div>
                                         </div>
                                         <div class="row">
                                              <div class="col-md-6 marginku">
                                                   <label>Penyakit</label>
-                                                  <input class="form-control" type="text" name="penyakit" required>
+                                                  <input class="form-control" placeholder="Enter Text" type="text" name="penyakit" required>
                                              </div>
                                              <div class="col-md-6 marginku">
                                                   <label>Biaya</label>
-                                                  <input class="form-control" type="text" name="biaya" required>
+                                                  <input class="form-control" placeholder="Enter Number" type="number" name="biaya" required>
                                              </div>
                                         </div>
                                    </div>

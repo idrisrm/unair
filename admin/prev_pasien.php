@@ -45,7 +45,9 @@
 						<a href="?menu=editPasien&id=<?php echo "$bc[id_pasien]"; ?>">
 							<i class="glyphicon glyphicon-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="del_pasien.php?id=<?php echo "$bc[id_pasien]"; ?>">
-							<i class="glyphicon glyphicon-trash" style="color:#FF0000"></i></a>
+							<i class="glyphicon glyphicon-trash" style="color:#FF0000"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="?menu=resi&id=<?php echo "$bc[nomor_pasien]"; ?>">
+							<i class="glyphicon glyphicon-print" style=""></i></a>
 					</td>
 				</tr>
 			</tbody>

@@ -198,7 +198,7 @@ $data = mysqli_fetch_array($ambildata);
                <div class="row">
                     <div class="col-lg-12">
                          <!-- <a class="btn btn-primary" href="">Simpan</a> -->
-                         <a class="btn btn-primary" href="?menu=resi">Selesai</a>
+                         <a class="btn btn-primary" href="?menu=resi&id=<?= $id ?>">Selesai</a>
                     </div>
                </div>
 

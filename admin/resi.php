@@ -27,6 +27,15 @@
     </style>
 </head>
 
+<?php
+include '../config/koneksi.php';
+$id = $_GET['id'];
+
+$total = mysqli_query($kon, "SELECT SUM(biaya) as biaya FROM detail_pasien WHERE nomor_pasien = '$id'");
+$datatotal = mysqli_fetch_array($total);
+
+?>
+
 <body>
     <div align="right"><button class="no-print" onClick="window.print();">Cetak</button></div>
     <table width="800" align="center">
@@ -94,28 +103,32 @@
     <table width="800" align="center" border="1">
         <thead>
             <tr>
-                <th scope="col">No</th>
-                <th scope="col">Kode</th>
-                <th scope="col">Sub</th>
-                <th scope="col">NID</th>
-                <th scope="col">Nama Pegawai</th>
-                <th scope="col">Item</th>
-                <th scope="col">Jumlah</th>
+                <th style="text-align: center;" align="center" scope="col">No</th>
+                <th style="text-align: center;" align="center" scope="col">Sub</th>
+                <th style="text-align: center;" align="center" scope="col">NID</th>
+                <th style="text-align: center;" align="center" scope="col">Nama Pegawai</th>
+                <th style="text-align: center;" align="center" scope="col">Jumlah</th>
             </tr>
         </thead>
         <tbody>
+            <?php
+            $ambildata = mysqli_query($kon, "SELECT * FROM detail_pasien join tb_pasien on tb_pasien.nomor_pasien = detail_pasien.nomor_pasien join tb_karyawan on tb_karyawan.id = detail_pasien.id_pasien join unit_sub on unit_sub.id = tb_karyawan.id_sub WHERE tb_pasien.nomor_pasien = '$id'");
+
+            $no = 1;
+            while ($data = mysqli_fetch_array($ambildata)) {
+            ?>
+                <tr>
+                    <th style="text-align: center;" scope="row"><?= $no ?></th>
+                    <td align="center"><?= $data['nama_sub'] ?></td>
+                    <td align="center"><?= $data['id_karyawan'] ?></td>
+                    <td align="center"><?= $data['nama_karyawan'] ?></td>
+                    <td align="center">Rp. <?= number_format($data['biaya'],0,",",".") ?></td>
+                </tr>
+            <?php $no++;
+            } ?>
             <tr>
-                <th scope="row">1</th>
-                <td align="center">4367734</td>
-                <td align="center">Keuangan</td>
-                <td align="center">452233</td>
-                <td align="center">Hofidatul</td>
-                <td align="center">4</td>
-                <td align="center">Rp. 4.000.000</td>
-            </tr>
-            <tr>
-                <th scope="row" colspan="6">Total</th>
-                <td align="center">Rp. 4.000.000</td>
+                <th style="text-align: center;" scope="row" colspan="4">Total</th>
+                <td align="center">Rp. <?= number_format($datatotal['biaya'],0,",",".") ?></td>
             </tr>
         </tbody>
     </table>
@@ -128,7 +141,7 @@
                     <height="160">
                 </div>
             </td>
-            <td width="300">Surabaya, 8 Juni 2022</td>
+            <td width="300">Surabaya, <?= date("Y/m/d") ?></td>
         </tr>
     </table>
     <br><br><br><br><br>

@@ -94,11 +94,11 @@
                                    </div>
                                    <div class="modal-body">
                                         <div class="row">
-                                             <div class="col-md-2 marginku">
+                                             <!-- <div class="col-md-2 marginku">
                                                   <label>No Item</label>
                                                   <input class="form-control" type="number" name="noitem" required value="1" readonly>
-                                             </div>
-                                             <div class="col-md-5 marginku">
+                                             </div> -->
+                                             <div class="col-md-6 marginku">
                                                   <label>Jenis Biaya</label>
                                                   <select name="jenis_biaya" class="form-control" required>
                                                        <option value="" selected>-- Pilih Salah Satu --</option>
@@ -106,7 +106,7 @@
                                                        <option value="2">Biaya Inap</option>
                                                   </select>
                                              </div>
-                                             <div class="col-md-5 marginku">
+                                             <div class="col-md-6 marginku">
                                                   <label>Tanggal Terima</label>
                                                   <input class="form-control" type="date" name="tanggal_terima" required>
                                              </div>

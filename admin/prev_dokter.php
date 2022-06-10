@@ -14,7 +14,8 @@
 			</td>
 		</tr>
 	</table>
-	<a href="?menu=inputDokter" class="btn btn-success">Tambah Data Dokter</a>
+	<br>
+	<!-- <a href="?menu=inputDokter" class="btn btn-success">Tambah Data Dokter</a> -->
 	<table class="table">
 		<thead>
 			<tr>
@@ -26,14 +27,18 @@
 				<th>Tempat Praktik</th>
 			</tr>
 		</thead>
-			<tbody>
+		<tbody>
+			<?php
+			$ambildata2 = mysqli_query($kon, "SELECT * FROM tb_dokter WHERE status = 1");
+			$no = 1;
+			while ($data = mysqli_fetch_array($ambildata2)) { ?>
 				<tr>
-					<td>1</td>
-					<td>Dr. Sung</td>
-					<td>0361788889</td>
-					<td>laki-Laki</td>
-					<td>Dokter Umum</td>
-					<td>RSU Probolinggo</td>
+					<td><?= $no?></td>
+					<td><?= $data['nama_dokter']?></td>
+					<td><?= $data['str']?></td>
+					<td><?= $data['jk_dokter']?></td>
+					<td><?= $data['specialis']?></td>
+					<td><?= $data['tempat_praktik']?></td>
 					<!-- <td>
 						<a href="?menu=editDokter&id=<?php echo "$bc[id_dokter]"; ?>">
 							<i class="glyphicon glyphicon-pencil"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -41,7 +46,8 @@
 							<i class="glyphicon glyphicon-remove" style="color:#FF0000"></i></a>
 					</td> -->
 				</tr>
-			</tbody>
+			<?php $no++; } ?>
+		</tbody>
 	</table>
 </body>
 

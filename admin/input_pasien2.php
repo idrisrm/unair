@@ -34,7 +34,7 @@ $data = mysqli_fetch_array($ambildata);
      }
 </style>
 
-<div class="panel-body" style="background-color: #f5f5f5;">
+<div class="panel-body" style="background-color: #f5f5f5; border-radius: 10px;">
      <div class="row">
           <div class="col-lg-12">
                <form action="../config/insertpasien2.php" method="POST">

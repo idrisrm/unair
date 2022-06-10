@@ -18,7 +18,9 @@
 				<th>No.</th>
 				<th>Nomor Pasien</th>
 				<th>Nama Pasien</th>
-				<th>Tanggal Daftar</th>
+				<th>Tanggal Periksa</th>
+				<th>Penyakit</th>
+				<th>Biaya</th>
 				<th>Pilihan</th>
 			</tr>
 		</thead>
@@ -36,12 +38,14 @@
 					<td><?php echo "
 
 				$bc[nama_karyawan]"; ?></td>
-					<td><?php echo "$bc[tanggal_terima]"; ?></td>
+					<td><?php echo "$bc[tanggal_periksa]"; ?></td>
+					<td><?php echo "$bc[penyakit]"; ?></td>
+					<td>Rp. <?php echo "$bc[biaya]"; ?></td>
 					<td>
 						<a href="?menu=editPasien&id=<?php echo "$bc[id_pasien]"; ?>">
-							<i class="glyphicon glyphicon-pencil"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+							<i class="glyphicon glyphicon-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="del_pasien.php?id=<?php echo "$bc[id_pasien]"; ?>">
-							<i class="glyphicon glyphicon-remove" style="color:#FF0000"></i></a>
+							<i class="glyphicon glyphicon-trash" style="color:#FF0000"></i></a>
 					</td>
 				</tr>
 			</tbody>

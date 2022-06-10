@@ -57,6 +57,9 @@ include "../config/koneksi.php";
             case 'editPasien':
               include 'update_pasien.php';
               break;
+            case 'inputRekam':
+              include 'input_rekam.php';
+              break;
               //dokter
             case 'dokter':
               include 'prev_dokter.php';

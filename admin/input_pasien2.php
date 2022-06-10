@@ -183,7 +183,12 @@ $data = mysqli_fetch_array($ambildata);
                                    <td><?= $data2['nama_karyawan'] ?></td>
                                    <td><?= $data2['uraian'] ?></td>
                                    <td>Rp. <?= $data2['biaya'] ?></td>
-                                   <td> Edit | hapus</td>
+                                   <td>
+                                        <a href="?menu=editPasien&id=">
+                                             <i class="glyphicon glyphicon-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <a href="del_pasien.php?id=">
+                                             <i class="glyphicon glyphicon-trash" style="color:#FF0000"></i></a>
+                                   </td>
                               </tr>
                          <?php $no++;
                          } ?>

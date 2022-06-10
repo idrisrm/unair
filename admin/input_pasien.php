@@ -8,6 +8,30 @@
           margin-bottom: 0px;
      }
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+     $(document).ready(function() {
+          $('#karyawan').change(function() {
+               var id = $(this).val();
+               console.log(id);
+               // $('#id_sub').val(id);
+               $.ajax({
+                    url: "http://localhost/unair/config/sub.php",
+                    method: "POST",
+                    data: {
+                         id: id
+                    },
+                    success: function(data) {
+                         var json = data,
+                              obj = JSON.parse(json);
+                         $('#nama_sub').val(obj.nama);
+                         $('#id_sub').val(obj.id_sub);
+                         console.log(obj.nama);
+                    }
+               });
+          });
+     });
+</script>
 
 <div class="panel-body" style="background-color: #f5f5f5;">
      <div class="row">
@@ -16,7 +40,10 @@
                     <div class="row">
                          <div class="col-md-1 marginku">
                               <label>Nomor</label>
-                              <input class="form-control" type="text" value="JPP799" name="nomor" required readonly>
+                              <?php $ambildata = mysqli_query($kon, "SELECT * FROM tb_pasien WHERE stts = 1 ORDER BY id_pasien DESC LIMIT 1");
+                                   $data = mysqli_fetch_array($ambildata);
+                              ?>
+                              <input class="form-control" type="text" value="JPP<?= $data['id_pasien'] + 1?>" name="nomor" required readonly>
                          </div>
                          <div class="col-md-2 marginku">
                               <label>Tanggal</label>
@@ -32,14 +59,18 @@
                          </div>
                          <div class="col-md-2 marginku">
                               <label>Unit Sub</label>
-                              <input class="form-control" type="text" value="1" name="id_sub" required readonly>
+                              <input class="form-control" type="text" id="nama_sub" required readonly>
+                              <input class="form-control" type="hidden" id="id_sub" name="id_sub" required readonly>
                          </div>
                          <div class="col-md-4 marginku">
                               <label>Penerima</label>
-                              <select name="karyawan" class="form-control" required>
+                              <select name="karyawan" id="karyawan" class="form-control" onkeypress="isi_otomatis()" required>
                                    <option value="">-- Pilih Salah Satu --</option>
-                                   <option value="1">Hofidatul</option>
-                                   <option value="2">Nova Ayu</option>
+                                   <?php
+                                   $ambildata = mysqli_query($kon, "SELECT * FROM tb_karyawan WHERE status = 1");
+                                   while ($data = mysqli_fetch_array($ambildata)) { ?>
+                                        <option value="<?= $data["id"] ?>"><?= $data["nama_karyawan"] ?></option>
+                                   <?php } ?>
                               </select>
                          </div>
                     </div>
@@ -87,18 +118,24 @@
                                              </div>
                                              <div class="col-md-4 marginku">
                                                   <label>pasien</label>
-                                                  <select name="id_pasien" class="form-control" required>
-                                                       <option value="" selected>-- Pilih Salah Satu --</option>
-                                                       <option value="1">Hofidatul</option>
-                                                       <option value="2">Nova Ayu</option>
+                                                  <select name="id_pasien" id="id_pasien" class="form-control" onkeypress="isi_otomatis()" required>
+                                                       <option value="">-- Pilih Salah Satu --</option>
+                                                       <?php
+                                                       $ambildata = mysqli_query($kon, "SELECT * FROM tb_karyawan WHERE status = 1");
+                                                       while ($data = mysqli_fetch_array($ambildata)) { ?>
+                                                            <option value="<?= $data["id"] ?>"><?= $data["nama_karyawan"] ?></option>
+                                                       <?php } ?>
                                                   </select>
                                              </div>
                                              <div class="col-md-4 marginku">
                                                   <label>Dokter</label>
-                                                  <select name="id_dokter" class="form-control" required>
-                                                       <option value="" selected>-- Pilih Salah Satu --</option>
-                                                       <option value="1">Armani</option>
-                                                       <option value="2">Sung</option>
+                                                  <select name="id_dokter" id="id_dokter" class="form-control" onkeypress="isi_otomatis()" required>
+                                                       <option value="">-- Pilih Salah Satu --</option>
+                                                       <?php
+                                                       $ambildata = mysqli_query($kon, "SELECT * FROM tb_dokter WHERE status = 1");
+                                                       while ($data = mysqli_fetch_array($ambildata)) { ?>
+                                                            <option value="<?= $data["id_dokter"] ?>"><?= $data["nama_dokter"] ?></option>
+                                                       <?php } ?>
                                                   </select>
                                              </div>
                                         </div>

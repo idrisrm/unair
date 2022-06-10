@@ -104,18 +104,24 @@ $data = mysqli_fetch_array($ambildata);
                                              </div>
                                              <div class="col-md-4 marginku">
                                                   <label>pasien</label>
-                                                  <select name="id_pasien" class="form-control" required>
-                                                       <option value="" selected>-- Pilih Salah Satu --</option>
-                                                       <option value="1">Hofidatul</option>
-                                                       <option value="2">Nova Ayu</option>
+                                                  <select name="id_pasien" id="id_pasien" class="form-control" onkeypress="isi_otomatis()" required>
+                                                       <option value="">-- Pilih Salah Satu --</option>
+                                                       <?php
+                                                       $ambildata = mysqli_query($kon, "SELECT * FROM tb_karyawan WHERE status = 1");
+                                                       while ($data = mysqli_fetch_array($ambildata)) { ?>
+                                                            <option value="<?= $data["id"] ?>"><?= $data["nama_karyawan"] ?></option>
+                                                       <?php } ?>
                                                   </select>
                                              </div>
                                              <div class="col-md-4 marginku">
                                                   <label>Dokter</label>
-                                                  <select name="id_dokter" class="form-control" required>
-                                                       <option value="" selected>-- Pilih Salah Satu --</option>
-                                                       <option value="1">Armani</option>
-                                                       <option value="2">Sung</option>
+                                                  <select name="id_dokter" id="id_dokter" class="form-control" onkeypress="isi_otomatis()" required>
+                                                       <option value="">-- Pilih Salah Satu --</option>
+                                                       <?php
+                                                       $ambildata = mysqli_query($kon, "SELECT * FROM tb_dokter WHERE status = 1");
+                                                       while ($data = mysqli_fetch_array($ambildata)) { ?>
+                                                            <option value="<?= $data["id_dokter"] ?>"><?= $data["nama_dokter"] ?></option>
+                                                       <?php } ?>
                                                   </select>
                                              </div>
                                         </div>
@@ -171,22 +177,23 @@ $data = mysqli_fetch_array($ambildata);
                          $no = 1;
                          while ($data2 = mysqli_fetch_array($ambildata2)) { ?>
                               <tr>
-                                   <td><?= $no?></td>
-                                   <td><?= $data2['jenis_biaya'] == 1? "Perorangan" : "Fasilitas kantor" ?></td>
-                                   <td><?= $data2['tanggal_periksa']?></td>
-                                   <td><?= $data2['nama_karyawan']?></td>
-                                   <td><?= $data2['uraian']?></td>
-                                   <td>Rp. <?= $data2['biaya']?></td>
+                                   <td><?= $no ?></td>
+                                   <td><?= $data2['jenis_biaya'] == 1 ? "Periksa" : "Rawat Inap" ?></td>
+                                   <td><?= $data2['tanggal_periksa'] ?></td>
+                                   <td><?= $data2['nama_karyawan'] ?></td>
+                                   <td><?= $data2['uraian'] ?></td>
+                                   <td>Rp. <?= $data2['biaya'] ?></td>
                                    <td> Edit | hapus</td>
                               </tr>
-                         <?php $no++; } ?>
+                         <?php $no++;
+                         } ?>
                     </tbody>
                </table>
 
                <div class="row">
                     <div class="col-lg-12">
-                         <a class="btn btn-primary" href="">Simpan</a>
-                         <a class="btn btn-default" href="?menu=resi">Selesai</a>
+                         <!-- <a class="btn btn-primary" href="">Simpan</a> -->
+                         <a class="btn btn-primary" href="?menu=resi">Selesai</a>
                     </div>
                </div>
 

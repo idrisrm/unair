@@ -123,8 +123,8 @@ include "../config/koneksi.php";
               include 'laporan_user.php';
               break;
 
-            case 'laporan_lengkap':
-              include 'laporan_lengkap.php';
+            case 'laporan':
+              include 'laporan.php';
               break;
 
               //resi 

@@ -41,7 +41,7 @@
                 <a href=#><i class="fa fa-table fa-fw"></i> Report<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="?menu=laporan_lengkap">Laporan Rekam Medis</a>
+                        <a href="?menu=laporan">Laporan Rekam Medis</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->

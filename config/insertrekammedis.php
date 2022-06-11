@@ -8,7 +8,7 @@ $id_dokter        = $_POST['id_dokter'];
 $diagnosa           = $_POST['diagnosa'];
 $umur           = $_POST['umur'];
 $terapi           = $_POST['terapi'];
-
+$tanggal = date("Ymd");
 
 
 if (isset($_POST['kirim'])) {
@@ -17,7 +17,7 @@ if (isset($_POST['kirim'])) {
     // @$id_dokter = $bc3['id_dokter'] + 1;
     // echo "$id_dokter";
 
-    $sql1 = "INSERT INTO tb_rekam_medis VALUES ('', '$id_pasien', '$id_dokter',  '$tanggal_periksa', '$umur', '$terapi', '$diagnosa')";
+    $sql1 = "INSERT INTO tb_rekam_medis VALUES ('', '$id_pasien', '$id_dokter',  '$tanggal_periksa', $tanggal, '$umur', '$terapi', '$diagnosa', 1)";
     $hasil = mysqli_query($kon, $sql1);
 
 
@@ -26,13 +26,12 @@ if (isset($_POST['kirim'])) {
         alert ("Data Berhasil Disimpan");
         </script>';
         echo '<script type="text/javascript">
-            window.location.href = "http://localhost/unair/admin/index.php?menu=rekam_medis' . $nomor_pasien . '";
+            window.location.href = "http://localhost/unair/admin/index.php?menu=rekam_medis";
      </script>';
     } else {
         echo '<script language="javascript">
         alert ("Data gagal Disimpan");
         </script>';
-        echo $penyakit;
         echo '<script type="text/javascript">
             window.location.href = "http://localhost/unair/admin/index.php?menu=inputRekam";
      </script>';

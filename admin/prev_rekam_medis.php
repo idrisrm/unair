@@ -34,6 +34,7 @@
 		</thead>
 		<?php
 		include '../config/koneksi.php';
+		include "../config/cek_session1.php";
 		$no = 0;
 		if (!isset($_POST['cari']) && empty($_POST['pencarian'])) {
 			$sql = mysqli_query($kon, "SELECT * FROM tb_rekam_medis join tb_karyawan on tb_karyawan.id = tb_rekam_medis.id_pasien join tb_dokter on tb_dokter.id_dokter = tb_rekam_medis.id_dokter");

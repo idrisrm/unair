@@ -1,7 +1,7 @@
 <?php
 
 include '../config/koneksi.php';
-
+include "../config/cek_session1.php";
 $id = $_GET['id'];
 
 // if ($id) {
@@ -184,9 +184,9 @@ $data = mysqli_fetch_array($ambildata);
                                    <td><?= $data2['uraian'] ?></td>
                                    <td>Rp. <?= $data2['biaya'] ?></td>
                                    <td>
-                                        <a href="?menu=editPasien&id=">
-                                             <i class="glyphicon glyphicon-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <a href="del_pasien.php?id=">
+                                        <a href="?menu=editPasien&id=<?= $data2['id_detail'] ?>">
+                                             <i class="glyphicon glyphicon-edit"></i></a>
+                                        <a href="" onclick="confirm_modal('../config/hapuspasien.php?id=<?= $data2['id_detail']?>&nomor=<?= $data2['nomor_pasien']?> ')" data-toggle="modal" data-target="#modalDelete">
                                              <i class="glyphicon glyphicon-trash" style="color:#FF0000"></i></a>
                                    </td>
                               </tr>
@@ -198,10 +198,47 @@ $data = mysqli_fetch_array($ambildata);
                <div class="row">
                     <div class="col-lg-12">
                          <!-- <a class="btn btn-primary" href="">Simpan</a> -->
-                         <a class="btn btn-primary" href="?menu=resi&id=<?= $id ?>">Selesai</a>
+                         <a class="btn btn-primary" href="?menu=resi&id=<?= $id ?>">Cetak Dokumen</a>
+                         <a href="" class="btn btn-danger" onclick="confirm_modal1('../config/hapusdokumen.php?nomor=<?= $id?>')" data-toggle="modal" data-target="#modalDelete1" >Hapus Dokumen</a>
+                         <a class="btn btn-success" href="?menu=pasien">Selesai</a>
                     </div>
                </div>
 
+               <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                         <div class="modal-content">
+                              <div class="modal-header">
+                                   <h5 class="modal-title" id="deleteModalLabel">Hapus Data</h5>
+                                   <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                   </button>
+                              </div>
+                              <div class="modal-body">Apakah Anda yakin untuk menghapus data?</div>
+                              <div class="modal-footer">
+                                   <button class="btn btn-primary" type="button" data-dismiss="modal">Batal</button>
+                                   <a href="" id="delete_link" class="btn btn-danger">hapus</a>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+
+               <div class="modal fade" id="modalDelete1" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                         <div class="modal-content">
+                              <div class="modal-header">
+                                   <h5 class="modal-title" id="deleteModalLabel">Hapus Dokumen</h5>
+                                   <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                   </button>
+                              </div>
+                              <div class="modal-body">Apakah Anda yakin untuk menghapus data?</div>
+                              <div class="modal-footer">
+                                   <button class="btn btn-primary" type="button" data-dismiss="modal">Batal</button>
+                                   <a href="" id="delete_link1" class="btn btn-danger">hapus</a>
+                              </div>
+                         </div>
+                    </div>
+               </div>
 
 
           </div>
@@ -229,6 +266,28 @@ $data = mysqli_fetch_array($ambildata);
 
 <!-- Custom Theme JavaScript -->
 <script src="../dist/js/sb-admin-2.js"></script>
+
+<script type="text/javascript">
+     function confirm_modal(delete_url) {
+          console.log(delete_url);
+          document.getElementById('delete_link').setAttribute('href', delete_url);
+          // document.getElementById('delete_link').href = delete_url;
+
+          $('#hapusModal').modal('show', {
+               backdrop: 'static'
+          });
+     }
+
+     function confirm_modal1(delete_url1) {
+          console.log(delete_url1);
+          document.getElementById('delete_link1').setAttribute('href', delete_url1);
+          // document.getElementById('delete_link').href = delete_url;
+
+          $('#hapusModal1').modal('show', {
+               backdrop: 'static'
+          });
+     }
+</script>
 
 </body>
 

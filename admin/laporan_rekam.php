@@ -28,6 +28,7 @@
 </head>
 
 <?php
+include "../config/cek_session1.php";
 include '../config/koneksi.php';
 $bulan = $_POST['bulan'];
 $tahun = $_POST['tahun'];
@@ -110,7 +111,7 @@ $tahun = $_POST['tahun'];
         </thead>
         <tbody>
             <?php
-            $q = mysqli_query($kon, "SELECT * FROM tb_rekam_medis join tb_karyawan on tb_karyawan.id = tb_rekam_medis.id_pasien join tb_dokter on tb_dokter.id_dokter = tb_rekam_medis.id_dokter join unit_sub on unit_sub.id = tb_karyawan.id_sub WHERE MONTH(tanggal_daftar) = '$bulan'");
+            $q = mysqli_query($kon, "SELECT * FROM tb_rekam_medis join tb_karyawan on tb_karyawan.id = tb_rekam_medis.id_pasien join tb_dokter on tb_dokter.id_dokter = tb_rekam_medis.id_dokter join unit_sub on unit_sub.id = tb_karyawan.id_sub WHERE MONTH(tanggal_daftar) = '$bulan' && YEAR(tanggal_daftar) = '$tahun' && tb_rekam_medis.status = 1 ");
             // $data = mysqli_fetch_array($q);
 
             $no = 1;

@@ -16,8 +16,7 @@
         session_start();
         $_SESSION['user']	= $nama_user;
         $_SESSION['pass']	= $pswd;
-
-				$_SESSION['dokter'] = $bc['id_dokter'];
+				// $_SESSION['dokter'] = $bc['id_dokter'];
 		//$_SESSION['akses']	= '$bc[akses]';
             if ($row[4]==1) {
               header('Location:../admin/');

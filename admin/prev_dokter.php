@@ -29,6 +29,7 @@
 		</thead>
 		<tbody>
 			<?php
+			include "../config/cek_session1.php";
 			$ambildata2 = mysqli_query($kon, "SELECT * FROM tb_dokter WHERE status = 1");
 			$no = 1;
 			while ($data = mysqli_fetch_array($ambildata2)) { ?>

@@ -80,7 +80,7 @@
 <!-- Custom Theme JavaScript -->
 <script src="../dist/js/sb-admin-2.js"></script>
 <?php
-
+include "../config/cek_session1.php";
 include '../config/koneksi.php';
 
 @$nama_dokter     = $_POST['nama_dokter'];

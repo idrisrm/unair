@@ -28,6 +28,7 @@
 </head>
 
 <?php
+include "../config/cek_session1.php";
 include '../config/koneksi.php';
 $id = $_GET['id'];
 

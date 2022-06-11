@@ -41,9 +41,13 @@
                          <div class="col-md-1 marginku">
                               <label>Nomor</label>
                               <?php $ambildata = mysqli_query($kon, "SELECT * FROM tb_pasien WHERE stts = 1 ORDER BY id_pasien DESC LIMIT 1");
-                                   $data = mysqli_fetch_array($ambildata);
+                              $data = mysqli_fetch_array($ambildata);
                               ?>
-                              <input class="form-control" type="text" value="JPP<?= $data['id_pasien'] + 1?>" name="nomor" required readonly>
+                              <?php if ($data) { ?>
+                                   <input class="form-control" type="text" value="JPP<?= $data['id_pasien'] + 1 ?>" name="nomor" required readonly>
+                              <?php } else { ?>
+                                   <input class="form-control" type="text" value="JPP1" name="nomor" required readonly>
+                              <?php } ?>
                          </div>
                          <div class="col-md-2 marginku">
                               <label>Tanggal</label>
@@ -67,6 +71,7 @@
                               <select name="karyawan" id="karyawan" class="form-control" onkeypress="isi_otomatis()" required>
                                    <option value="">-- Pilih Salah Satu --</option>
                                    <?php
+                                   include "../config/cek_session1.php";
                                    $ambildata = mysqli_query($kon, "SELECT * FROM tb_karyawan WHERE status = 1");
                                    while ($data = mysqli_fetch_array($ambildata)) { ?>
                                         <option value="<?= $data["id"] ?>"><?= $data["nama_karyawan"] ?></option>

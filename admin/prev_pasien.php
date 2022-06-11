@@ -26,6 +26,7 @@
 		</thead>
 		<?php
 		include '../config/koneksi.php';
+		include "../config/cek_session1.php";
 		$no = 0;
 		$sql = mysqli_query($kon, "SELECT * FROM detail_pasien join tb_karyawan on tb_karyawan.id = detail_pasien.id_pasien join tb_dokter on tb_dokter.id_dokter = detail_pasien.id_dokter");
 		while ($bc = mysqli_fetch_array($sql)) {
@@ -42,12 +43,11 @@
 					<td><?php echo "$bc[penyakit]"; ?></td>
 					<td>Rp. <?php echo "$bc[biaya]"; ?></td>
 					<td>
-						<a href="?menu=editPasien&id=<?php echo "$bc[id_pasien]"; ?>">
-							<i class="glyphicon glyphicon-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
-						<a href="del_pasien.php?id=<?php echo "$bc[id_pasien]"; ?>">
-							<i class="glyphicon glyphicon-trash" style="color:#FF0000"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
-						<a href="?menu=resi&id=<?php echo "$bc[nomor_pasien]"; ?>">
-							<i class="glyphicon glyphicon-print" style=""></i></a>
+						<a href="?menu=inputPasien2&id=<?php echo "$bc[nomor_pasien]"; ?>">
+							<i class="glyphicon glyphicon-plus"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+						
+						<!-- <a href="?menu=resi&id=<?php echo "$bc[nomor_pasien]"; ?>">
+							<i class="glyphicon glyphicon-print" ></i></a> -->
 					</td>
 				</tr>
 			</tbody>

@@ -1,7 +1,6 @@
 <?php
-@session_start();
 include "../config/koneksi.php";
-//if ($_SESSION['user']) {
+include "../config/cek_session1.php";
 
 ?>
 <!DOCTYPE html>
@@ -55,7 +54,7 @@ include "../config/koneksi.php";
               include 'input_pasien2.php';
               break;
             case 'editPasien':
-              include 'update_pasien.php';
+              include 'edit_pasien.php';
               break;
             case 'inputRekam':
               include 'input_rekam.php';

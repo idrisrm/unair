@@ -1,5 +1,5 @@
 <?php
-
+include 'config/cek_session.php';
 mysqli_connect("localhost", "root", "", "rekam_medis");
 // mysql_select_db("rekam_medis");
 
@@ -42,10 +42,10 @@ mysqli_connect("localhost", "root", "", "rekam_medis");
                 <form role="form" method="post" action="config/cek_login.php">
                     <fieldset>
                         <div class="form-group">
-                            <input class="form-control" placeholder="Username" name="user" autofocus>
+                            <input class="form-control" placeholder="Username" name="user" autofocus required>
                         </div>
                         <div class="form-group">
-                            <input type="password" name="pass" class="form-control" placeholder="Password">
+                            <input type="password" name="pass" class="form-control" placeholder="Password" required>
                         </div>
                         <!-- Change this to a button or input when using this as a form -->
                         <button class="btn btn-outline btn-info" type="submit" name="log" value="login">Masuk</button>

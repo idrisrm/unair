@@ -1,6 +1,6 @@
 <div class="row">
      <div class="col-lg-12">
-          <h1 class="page-header">Halaman Input Data Rekam Medis</h1>
+          <h1 class="page-header">Halaman Edit Pasien</h1>
      </div>
 
 </div>
@@ -9,55 +9,78 @@
           margin-bottom: 3px;
      }
 </style>
+<?php
+include "../config/cek_session1.php";
+$id = $_GET['id'];
 
-<div class="panel-body" style="background-color: #f5f5f5; border-radius: 10px;">
+$ambildata = mysqli_query($kon, "SELECT * FROM detail_pasien join tb_karyawan on tb_karyawan.id = detail_pasien.id_pasien join tb_dokter on tb_dokter.id_dokter = detail_pasien.id_dokter WHERE id_detail = '$id'");
+
+$data1 = mysqli_fetch_array($ambildata);
+
+?>
+
+<div class="panel-body">
      <div class="row">
           <div class="col-lg-12">
-               <form method="POST" action="../config/insertrekammedis.php">
+               <form action="../config/editpasien.php" method="POST">
+                    <div class="row">
+                         <div class="col-md-6 marginku">
+                              <label>Jenis Biaya</label>
+                              <select name="jenis_biaya" class="form-control" required>
+                                   <option value="" selected>-- Pilih Salah Satu --</option>
+                                   <option value="1" <?= $data1['jenis_biaya'] == 1 ? "selected" : "" ?>>Biaya Pemeriksaan</option>
+                                   <option value="2" <?= $data1['jenis_biaya'] == 2 ? "selected" : "" ?>>Biaya Inap</option>
+                              </select>
+                         </div>
+                         <div class="col-md-6 marginku">
+                              <label>Tanggal Terima</label>
+                              <input class="form-control" type="date" value="<?= $data1['tanggal_terima'] ?>" name="tanggal_terima" required>
+                              <input class="form-control" type="hidden" value="<?= $id ?>" name="id_detail" required>
+                              <input class="form-control" type="hidden" value="<?= $data1['nomor_pasien'] ?>" name="nomor_pasien" required>
+                         </div>
+                    </div>
                     <div class="row">
                          <div class="col-md-4 marginku">
-                              <label>Nama Pasien</label>
-                              <select name="id_pasien" id="karyawan" class="form-control" onkeypress="isi_otomatis()" required>
+                              <label>Tanggal periksa</label>
+                              <input class="form-control" type="date" value="<?= $data1['tanggal_periksa'] ?>" name="tanggal_periksa" required>
+                         </div>
+                         <div class="col-md-4 marginku">
+                              <label>pasien</label>
+                              <select name="id_pasien" id="id_pasien" class="form-control" onkeypress="isi_otomatis()" required>
                                    <option value="">-- Pilih Salah Satu --</option>
                                    <?php
-                                   include "../config/cek_session1.php";
                                    $ambildata = mysqli_query($kon, "SELECT * FROM tb_karyawan WHERE status = 1");
                                    while ($data = mysqli_fetch_array($ambildata)) { ?>
-                                        <option value="<?= $data["id"] ?>"><?= $data["nama_karyawan"] ?></option>
+                                        <option value="<?= $data["id"] ?>" <?= $data1['id_pasien'] == $data['id'] ? "selected" : "" ?>><?= $data["nama_karyawan"] ?></option>
                                    <?php } ?>
                               </select>
                          </div>
                          <div class="col-md-4 marginku">
-                              <label>Nama Dokter</label>
+                              <label>Dokter</label>
                               <select name="id_dokter" id="id_dokter" class="form-control" onkeypress="isi_otomatis()" required>
                                    <option value="">-- Pilih Salah Satu --</option>
                                    <?php
                                    $ambildata = mysqli_query($kon, "SELECT * FROM tb_dokter WHERE status = 1");
                                    while ($data = mysqli_fetch_array($ambildata)) { ?>
-                                        <option value="<?= $data["id_dokter"] ?>"><?= $data["nama_dokter"] ?></option>
+                                        <option value="<?= $data["id_dokter"] ?>" <?= $data1['id_dokter'] == $data['id_dokter'] ? "selected" : "" ?>><?= $data["nama_dokter"] ?></option>
                                    <?php } ?>
                               </select>
-                         </div>
-                         <div class="col-md-4 marginku">
-                              <label>Tanggal Periksa</label>
-                              <input class="form-control" placeholder="Enter text" type="date" name="tanggal_periksa" required>
-                         </div>
-                    </div>
-                    <div class="row">
-                         <div class="col-md-6 marginku">
-                              <label>Umur</label>
-                              <input class="form-control" type="number" placeholder="Enter text" name="umur" required>
-                         </div>
-                         <div class="col-md-6 marginku">
-                              <label>Terapi</label>
-                              <input class="form-control" placeholder="Enter text" name="terapi" required>
                          </div>
                     </div>
                     <div class="row">
                          <div class="col-md-12 marginku">
-                              <label>Diagnosa</label>
-                              <!-- <input class="form-control" placeholder="Enter text" name="umur" required> -->
-                              <textarea class="form-control" name="diagnosa" cols="30" rows="10" required></textarea>
+                              <label>Uraian</label>
+                              <input class="form-control" type="text" name="uraian_pasien" value="<?= $data1['uraian'] ?>" required>
+                         </div>
+                    </div>
+                    <div class="row">
+                         <div class="col-md-6 marginku">
+                              <label>Penyakit</label>
+                              <input class="form-control" type="text" name="penyakit" value="<?= $data1['penyakit'] ?>" required>
+                         </div>
+                         <div class="col-md-6 marginku">
+                              <label>Biaya</label>
+                              <input class="form-control" type="text" name="biaya" value="<?= $data1['biaya'] ?>" required>
                          </div>
                     </div>
                     <div class="row marginku">

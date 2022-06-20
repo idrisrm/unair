@@ -31,7 +31,7 @@ if (isset($_POST['kirim'])) {
     // $sql1 = "INSERT INTO tb_pasien VALUES ('', '$nomor_pasien', '$id_sub',  '$id_karyawan', '$jenis_penggantian', '$tanggal_daftar', '$uraian', '$jumlah_item', '1')";
     // $hasil = mysqli_query($kon, $sql1);
 
-    $sql2 = "INSERT INTO detail_pasien VALUES ('', '$nomor_pasien', '$jenis_biaya',  '$tanggal_terima', '$tanggal_periksa', '$id_pasien', '$id_dokter', '$uraian', '$penyakit', '$biaya')";
+    $sql2 = "INSERT INTO detail_pasien VALUES ('', '$nomor_pasien', '$jenis_biaya',  '$tanggal_terima', '$tanggal_periksa', '$id_pasien', '$id_dokter', '$uraian', '$penyakit', '', '$biaya')";
     $hasil = mysqli_query($kon, $sql2);
 
     if ($hasil) {

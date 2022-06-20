@@ -26,17 +26,48 @@
                               obj = JSON.parse(json);
                          $('#nama_sub').val(obj.nama);
                          $('#id_sub').val(obj.id_sub);
+                         $('#nid').val(obj.nid);
                          console.log(obj.nama);
                     }
                });
           });
      });
 </script>
+<script type="text/javascript">
+     $(document).ready(function() {
+          $('#jenispenggantian').change(function() {
+               var id = $(this).val();
+               console.log(id);
+               if (id == 1) {
+                    $("#rekening").remove();
+                    $("#rek").append("<input id='rekening' class='form-control' placeholder='Enter Text' type='hidden' name='rekening' value='-' required>");
+               } else if (id == 2) {
+                    $("#rekening").remove();
+                    $("#rek").append("<div id='rekening' class='col-md-12 marginku'><label>Nomor Rekening Pihak Ketiga</label><input id='rekening' class='form-control' placeholder='Enter Number' type='number' name='rekening' required></div>");
+               }
+          });
+     });
+</script>
+<!-- <script>
+     function tampilkan() {
+
+          var nama_kota = document.getElementById("jenispenggantian").value;
+          var p_kontainer = document.getElementById("rek");
+          console.log(nama_kota);
+          if (nama_kota == "1") {
+               p_kontainer.innerHTML = "Jakarta Ibu kota Republik Indonesia";
+               console.log("hehe");
+          } else if (nama_kota == "2") {
+               p_kontainer.innerHTML = "Bandung kota kembang";
+               console.log("huhu");
+          }
+     }
+</script> -->
 
 <div class="panel-body" style="background-color: #f5f5f5; border-radius: 10px;">
      <div class="row">
           <div class="col-lg-12">
-               <form action="../config/insertpasien.php" method="POST">
+               <form action="../config/insertpasien.php" method="POST" enctype="multipart/form-data">
                     <div class="row">
                          <div class="col-md-1 marginku">
                               <label>Nomor</label>
@@ -55,10 +86,10 @@
                          </div>
                          <div class="col-md-3 marginku">
                               <label>Jenis Penggantian</label>
-                              <select name="jenis_penggantian" class="form-control" required>
+                              <select name="jenis_penggantian" id="jenispenggantian" class="form-control" required>
                                    <option value="" selected>-- Pilih Salah Satu --</option>
                                    <option value="1">Perorangan</option>
-                                   <option value="2">Fasilitas Kantor</option>
+                                   <option value="2">Tagihan Pihak Ketiga</option>
                               </select>
                          </div>
                          <div class="col-md-2 marginku">
@@ -66,7 +97,11 @@
                               <input class="form-control" type="text" id="nama_sub" required readonly>
                               <input class="form-control" type="hidden" id="id_sub" name="id_sub" required readonly>
                          </div>
-                         <div class="col-md-4 marginku">
+                         <div class="col-md-2 marginku">
+                              <label>NID</label>
+                              <input class="form-control" type="text" id="nid" required readonly>
+                         </div>
+                         <div class="col-md-2 marginku">
                               <label>Penerima</label>
                               <select name="karyawan" id="karyawan" class="form-control" onkeypress="isi_otomatis()" required>
                                    <option value="">-- Pilih Salah Satu --</option>
@@ -80,14 +115,21 @@
                          </div>
                     </div>
                     <div class="row">
-                         <div class="col-md-11 marginku">
+                         <div class="col-md-5 marginku">
                               <label>Uraian</label>
                               <input class="form-control" placeholder="Enter Text" type="text" name="uraian" required>
                          </div>
-                         <div class="col-md-1 marginku">
+                         <div class="col-md-5 marginku">
+                              <label>Kwitansi</label>
+                              <input class="form-control" placeholder="Enter Text" type="file" name="kwitansi" required>
+                         </div>
+                         <div class="col-md-2 marginku">
                               <label>Jumlah Item</label>
                               <input class="form-control" placeholder="Enter Number" type="number" name="jumlah_item" required>
                          </div>
+                    </div>
+                    <div class="row" id="rek">
+                         <!-- tempat rekening pihak ketiga -->
                     </div>
                     <!-- Modal -->
                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -108,7 +150,9 @@
                                                   <select name="jenis_biaya" class="form-control" required>
                                                        <option value="" selected>-- Pilih Salah Satu --</option>
                                                        <option value="1">Biaya Pemeriksaan</option>
-                                                       <option value="2">Biaya Inap</option>
+                                                       <option value="2">Biaya Apotek</option>
+                                                       <option value="3">Biaya Rawat Inap</option>
+                                                       <option value="4">Biaya Resep Kacamata</option>
                                                   </select>
                                              </div>
                                              <div class="col-md-6 marginku">

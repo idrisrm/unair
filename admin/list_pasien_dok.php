@@ -8,13 +8,6 @@
 
 <body>
 	<h1>Data Pasien Karyawan</h1>
-	<?php
-	if ($_SESSION['akses'] == 1) {
-	?>
-		<a href="?menu=inputPasien" class="btn btn-success">
-			Tambah Pasien
-		</a>
-	<?php } ?>
 
 	<table class="table">
 		<thead>
@@ -25,18 +18,14 @@
 				<th>Tanggal Periksa</th>
 				<th>Penyakit</th>
 				<th>Biaya</th>
-				<?php
-				if ($_SESSION['akses'] == 1) {
-				?>
-					<th>Pilihan</th>
-				<?php } ?>
+				<th>Pilihan</th>
 			</tr>
 		</thead>
 		<?php
 		include '../config/koneksi.php';
 		include "../config/cek_session1.php";
 		$no = 0;
-		$sql = mysqli_query($kon, "SELECT * FROM detail_pasien join tb_karyawan on tb_karyawan.id = detail_pasien.id_pasien join tb_dokter on tb_dokter.id_dokter = detail_pasien.id_dokter");
+		$sql = mysqli_query($kon, "SELECT * FROM detail_pasien join tb_karyawan on tb_karyawan.id = detail_pasien.id_pasien join tb_dokter on tb_dokter.id_dokter = detail_pasien.id_dokter where diagnosa = ''");
 		while ($bc = mysqli_fetch_array($sql)) {
 			$no++;
 		?>
@@ -49,15 +38,14 @@
 				$bc[nama_karyawan]"; ?></td>
 					<td><?php echo "$bc[tanggal_periksa]"; ?></td>
 					<td><?php echo "$bc[penyakit]"; ?></td>
-					<td>Rp. <?= number_format($bc['biaya'],0,",",".") ?></td>
-					<?php
-					if ($_SESSION['akses'] == 1) {
-					?>
-						<td>
-							<a href="?menu=inputPasien2&id=<?php echo "$bc[nomor_pasien]"; ?>">
-								<i class="glyphicon glyphicon-plus"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
-						</td>
-					<?php } ?>
+					<td>Rp. <?php echo "$bc[biaya]"; ?></td>
+					<td>
+						<a href="?menu=diagnosapas&id=<?php echo "$bc[id_detail]"; ?>">
+							<i class="glyphicon glyphicon-plus"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+
+						<!-- <a href="?menu=resi&id=<?php echo "$bc[nomor_pasien]"; ?>">
+							<i class="glyphicon glyphicon-print" ></i></a> -->
+					</td>
 				</tr>
 			</tbody>
 		<?php

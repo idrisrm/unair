@@ -1,6 +1,6 @@
 <div class="row">
      <div class="col-lg-12">
-          <h1 class="page-header">Halaman Input Data Dokter</h1>
+          <h1 class="page-header">Halaman Input Diagnosa Rekam Medis</h1>
      </div>
 
 </div>
@@ -10,49 +10,29 @@
      }
 </style>
 
-<div class="panel-body">
+<?php
+include '../config/koneksi.php';
+$id = $_GET['id'];
+
+$sql = mysqli_query($kon, "SELECT * FROM detail_pasien join tb_pasien on tb_pasien.nomor_pasien = detail_pasien.nomor_pasien WHERE id_detail = '$id'");
+$data = mysqli_fetch_array($sql);
+?>
+
+<div class="panel-body" style="background-color: #f5f5f5; border-radius: 10px;">
      <div class="row">
           <div class="col-lg-12">
-               <form method="POST" action="../config/insertdokter.php">
-                    <div class="row">
-                         <div class="col-md-4 marginku">
-                              <label>Nama Dokter</label>
-                              <input class="form-control" placeholder="Enter text" name="nama" required>
-                         </div>
-                         <div class="col-md-4 marginku">
-                              <label>No. STR </label>
-                              <input class="form-control" type="number" placeholder="Enter Number" name="str" required>
-                         </div>
-                         <div class="col-md-4 marginku">
-                              <label>Jenis Kelamin</label>
-                              <select name="jk" class="form-control" required>
-                                   <option value="">-- Pilih Salah Satu --</option>
-                                   <option value="Laki-laki">Laki-Laki</option>
-                                   <option value="Perempuan">Perempuan</option>
-                              </select>
-                         </div>
+               <form method="POST" action="../config/updatediagnosapasien.php">
 
-                    </div>
                     <div class="row">
-                         <div class="col-md-6 marginku">
-                              <label>Specialist</label>
-                              <select name="specialis" class="form-control" required>
-                                   <option value="">-- Pilih Salah Satu --</option>
-                                   <option value="Dokter Umum">Dokter Umum</option>
-                                   <option value="Dokter Bedah">Dokter Bedah</option>
-                                   <option value="Psikiater">Psikiater</option>
-                                   <option value="Dokter Mata">Dokter Mata</option>
-                              </select>
-                         </div>
-                         <div class="col-md-6 marginku">
-                              <label>Tempat Praktik</label>
-                              <input class="form-control" placeholder="Enter text" name="praktik" required>
+                         <div class="col-md-12 marginku">
+                              <a href="../img/pasien/<?= $data['foto']?>"><img src="../img/pasien/<?= $data['foto']?>" width="200px" alt=""></a>
                          </div>
                     </div>
                     <div class="row">
                          <div class="col-md-12 marginku">
-                              <label>Alamat</label>
-                              <textarea class="form-control" name="alamat" cols="30" rows="10"></textarea>
+                              <label>Diagnosa</label>
+                              <input type="hidden" name="id" value="<?= $id?>">
+                              <textarea class="form-control" name="diagnosa" cols="30" rows="10" required><?= $data['diagnosa']?></textarea>
                          </div>
                     </div>
                     <div class="row marginku">

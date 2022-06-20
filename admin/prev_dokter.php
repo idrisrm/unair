@@ -7,13 +7,18 @@
 </head>
 
 <body>
-	<table>
-		<tr>
-			<td widht="10%">
-				<h1>Data Dokter</h1>
-			</td>
-		</tr>
-	</table>
+	<div class="row">
+		<div class="col-md-12">
+			<h1>Data Dokter</h1>
+		</div>
+		<?php
+		if ($_SESSION['akses'] == 1) {
+		?>
+			<div class="col-md-12">
+				<a href="?menu=inputDokter" class="btn btn-success">Tambah Dokter</a>
+			</div>
+		<?php } ?>
+	</div>
 	<br>
 	<!-- <a href="?menu=inputDokter" class="btn btn-success">Tambah Data Dokter</a> -->
 	<table class="table">
@@ -25,6 +30,7 @@
 				<th>Jenis Kelamin</th>
 				<th>Spesialis</th>
 				<th>Tempat Praktik</th>
+				<th>Pilihan</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -34,22 +40,49 @@
 			$no = 1;
 			while ($data = mysqli_fetch_array($ambildata2)) { ?>
 				<tr>
-					<td><?= $no?></td>
-					<td><?= $data['nama_dokter']?></td>
-					<td><?= $data['str']?></td>
-					<td><?= $data['jk_dokter']?></td>
-					<td><?= $data['specialis']?></td>
-					<td><?= $data['tempat_praktik']?></td>
-					<!-- <td>
-						<a href="?menu=editDokter&id=<?php echo "$bc[id_dokter]"; ?>">
-							<i class="glyphicon glyphicon-pencil"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
-						<a href="del_dokter.php?id=<?php echo "$bc[id_dokter]"; ?>">
-							<i class="glyphicon glyphicon-remove" style="color:#FF0000"></i></a>
-					</td> -->
+					<td><?= $no ?></td>
+					<td><?= $data['nama_dokter'] ?></td>
+					<td><?= $data['nomor_str'] ?></td>
+					<td><?= $data['jk_dokter'] ?></td>
+					<td><?= $data['specialis'] ?></td>
+					<td><?= $data['tempat_praktik'] ?></td>
+					<td>
+						<a href="?menu=editDokter&id=<?php echo "$data[id_dokter]"; ?>">
+							<i class="glyphicon glyphicon-edit"></i></a>
+						<a href="" onclick="confirm_modal('../config/hapusdokter.php?id=<?= $data['id_dokter'] ?>')" data-toggle="modal" data-target="#modalDelete"><i style="color:#FF0000" class="glyphicon glyphicon-trash"></i></a>
+					</td>
 				</tr>
-			<?php $no++; } ?>
+			<?php $no++;
+			} ?>
 		</tbody>
 	</table>
 </body>
+<div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="deleteModalLabel">Hapus Data</h5>
+				<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+			<div class="modal-body">Apakah Anda yakin untuk menghapus data?</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" type="button" data-dismiss="modal">Batal</button>
+				<a href="" id="delete_link" class="btn btn-danger">hapus</a>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	function confirm_modal(delete_url) {
+		console.log(delete_url);
+		document.getElementById('delete_link').setAttribute('href', delete_url);
+
+		$('#hapusModal').modal('show', {
+			backdrop: 'static'
+		});
+	}
+</script>
 
 </html>

@@ -45,11 +45,11 @@ $datatotal = mysqli_fetch_array($total);
             <td>
                 <div align="center">
                     <font size="5"><b>UNIVERSITAS AIRLANGGA SURABAYA</b></font><br>
-                    <div align="center">Jl. Raya Porong No.1 Sidoarjo, Jawa Timur 61274<br>
-                        Website : www.unair.com Email : unair@gmail.com
+                    <div align="center">Jl. Dr. Ir. H. Soekarno, Mulyorejo, Kec. Mulyorejo, Kota SBY, Jawa Timur 60115<br>
+                        Website : www.unair.ac.id
                     </div>
                     <div align="center">
-                        Telepon : (0343) 856444 / (0343) 853080 Fax. : (0343) 850920
+                        Telepon : +62-031-5914042 / 5914043 / 5915551
                     </div>
             </td>
             <div style="clear:both" />
@@ -73,7 +73,7 @@ $datatotal = mysqli_fetch_array($total);
         <tr>
             <td width="250">Nomor</td>
             <td>:</td>
-            <td colspan="2">4367734</td>
+            <td colspan="2"><?= $id?></td>
         </tr>
         <tr>
             <td colspan="1" width="250">Perihal</td>
@@ -121,15 +121,15 @@ $datatotal = mysqli_fetch_array($total);
                 <tr>
                     <th style="text-align: center;" scope="row"><?= $no ?></th>
                     <td align="center"><?= $data['nama_sub'] ?></td>
-                    <td align="center"><?= $data['id_karyawan'] ?></td>
+                    <td align="center"><?= $data['NID'] ?></td>
                     <td align="center"><?= $data['nama_karyawan'] ?></td>
-                    <td align="center">Rp. <?= number_format($data['biaya'],0,",",".") ?></td>
+                    <td align="center">Rp. <?= number_format($data['biaya'], 0, ",", ".") ?></td>
                 </tr>
             <?php $no++;
             } ?>
             <tr>
                 <th style="text-align: center;" scope="row" colspan="4">Total</th>
-                <td align="center">Rp. <?= number_format($datatotal['biaya'],0,",",".") ?></td>
+                <td align="center">Rp. <?= number_format($datatotal['biaya'], 0, ",", ".") ?></td>
             </tr>
         </tbody>
     </table>
@@ -142,7 +142,7 @@ $datatotal = mysqli_fetch_array($total);
                     <height="160">
                 </div>
             </td>
-            <td width="300">Surabaya, <?= date("Y/m/d") ?></td>
+            <td width="300">Surabaya, <?= date("d M Y") ?></td>
         </tr>
     </table>
     <br><br><br><br><br>
@@ -154,7 +154,7 @@ $datatotal = mysqli_fetch_array($total);
                     <height="160">
                 </div>
             </td>
-            <td width="300"> <u>Hendry Dwi Nurmansyah Idris</u> </td>
+            <td width="300"> <u>Ghanidya Bernikha F.S</u> </td>
         </tr>
         <tr>
             <td width="250"></td>

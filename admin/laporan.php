@@ -13,7 +13,7 @@
 <div class="panel-body">
      <div class="row">
           <div class="col-lg-12">
-               <form action="laporan_rekam.php" method="POST">
+               <form action="?menu=laporanrekam" method="POST">
                     <div class="row">
                          <div class="col-md-6 marginku">
                               <label>Bulan</label>

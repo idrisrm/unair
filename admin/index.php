@@ -14,7 +14,7 @@ include "../config/cek_session1.php";
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Selamat Datang di Kampus UNAIR</title>
+  <title>Selamat Datang di RESY</title>
 
   <!-- Bootstrap Core CSS -->
   <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -29,16 +29,17 @@ include "../config/cek_session1.php";
   <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 
-<body>
+<body style="background-color: white;">
 
-  <div id="wrapper">
+  <div id="wrapper" >
 
     <?php include "navbar.php"; ?>
     <?php include "sidemenu.php"; ?>
 
     <!-- Page Content -->
-    <div id="page-wrapper">
+    <div id="page-wrapper" >
       <div class="container-fluid">
+        
         <div class="row">
 
           <?php
@@ -70,7 +71,7 @@ include "../config/cek_session1.php";
               include 'input_dokter.php';
               break;
             case 'editDokter':
-              include 'update_dokter.php';
+              include 'edit_dokter.php';
               break;
               //pendaftaran periksa
             case 'pendaftaran':
@@ -125,29 +126,50 @@ include "../config/cek_session1.php";
             case 'laporan':
               include 'laporan.php';
               break;
+            case 'laporanrekam':
+              include 'laporan_rekam.php';
+              break;
 
               //resi 
             case 'resi':
               include 'resi.php';
               break;
 
+              //Diagnosa
+              case 'diagnosarekammedis':
+                include 'list_rekam_medis_dok.php';
+                break;
+              case 'diagnosapasien':
+                include 'list_pasien_dok.php';
+                break;
+              case 'diagnosarekam':
+                include 'diagnosa_rekam.php';
+                break;
+              case 'diagnosapas':
+                include 'diagnosa_pasien.php';
+                break;
+
             default:
           ?>
-              <div class="col-lg-12">
+              <div class="col-lg-12" >
                 <h1 class="page-header">Home</h1>
                 <div align="center">
                   <img src="../img/LOGOUNAIR.jpeg" width="250px">
                   <h2>RESY (Reimbursement System)</h2>
                 </div>
               </div>
+              
+
           <?php
               break;
           }
           ?>
+          
 
 
           <!-- /.col-lg-12 -->
         </div>
+        
         <!-- /.row -->
       </div>
       <!-- /.container-fluid -->

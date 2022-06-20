@@ -9,26 +9,32 @@
           margin-bottom: 3px;
      }
 </style>
+<?php
+$id = $_GET['id'];
+$ambildata2 = mysqli_query($kon, "SELECT * FROM tb_dokter WHERE id_dokter = '$id' && status = 1");
+$data = mysqli_fetch_array($ambildata2);
+?>
 
 <div class="panel-body">
      <div class="row">
           <div class="col-lg-12">
-               <form method="POST" action="../config/insertdokter.php">
+               <form method="POST" action="../config/updatedokter.php">
                     <div class="row">
                          <div class="col-md-4 marginku">
                               <label>Nama Dokter</label>
-                              <input class="form-control" placeholder="Enter text" name="nama" required>
+                              <input class="form-control" type="hidden" name="id" value="<?= $id ?>" required>
+                              <input class="form-control" placeholder="Enter text" name="nama" value="<?= $data['nama_dokter'] ?>" required>
                          </div>
                          <div class="col-md-4 marginku">
                               <label>No. STR </label>
-                              <input class="form-control" type="number" placeholder="Enter Number" name="str" required>
+                              <input class="form-control" type="number" placeholder="Enter Number" value="<?= $data['nomor_str'] ?>" name="str" required>
                          </div>
                          <div class="col-md-4 marginku">
                               <label>Jenis Kelamin</label>
                               <select name="jk" class="form-control" required>
                                    <option value="">-- Pilih Salah Satu --</option>
-                                   <option value="Laki-laki">Laki-Laki</option>
-                                   <option value="Perempuan">Perempuan</option>
+                                   <option value="Laki-laki" <?= $data['jk_dokter'] == "Laki-laki" ? 'selected' : '' ?>>Laki-Laki</option>
+                                   <option value="Perempuan" <?= $data['jk_dokter'] == "Perempuan" ? 'selected' : '' ?>>Perempuan</option>
                               </select>
                          </div>
 
@@ -38,21 +44,21 @@
                               <label>Specialist</label>
                               <select name="specialis" class="form-control" required>
                                    <option value="">-- Pilih Salah Satu --</option>
-                                   <option value="Dokter Umum">Dokter Umum</option>
-                                   <option value="Dokter Bedah">Dokter Bedah</option>
-                                   <option value="Psikiater">Psikiater</option>
-                                   <option value="Dokter Mata">Dokter Mata</option>
+                                   <option value="Dokter Umum" <?= $data['specialis'] == "Dokter Umum" ? 'selected' : '' ?>>Dokter Umum</option>
+                                   <option value="Dokter Bedah" <?= $data['specialis'] == "Dokter Bedah" ? 'selected' : '' ?>>Dokter Bedah</option>
+                                   <option value="Psikiater" <?= $data['specialis'] == "Psikiater" ? 'selected' : '' ?>>Psikiater</option>
+                                   <option value="Dokter Mata" <?= $data['specialis'] == "Dokter Mata" ? 'selected' : '' ?>>Dokter Mata</option>
                               </select>
                          </div>
                          <div class="col-md-6 marginku">
                               <label>Tempat Praktik</label>
-                              <input class="form-control" placeholder="Enter text" name="praktik" required>
+                              <input class="form-control" placeholder="Enter text" value="<?= $data['tempat_praktik'] ?>" name="praktik" required>
                          </div>
                     </div>
                     <div class="row">
                          <div class="col-md-12 marginku">
                               <label>Alamat</label>
-                              <textarea class="form-control" name="alamat" cols="30" rows="10"></textarea>
+                              <textarea class="form-control" name="alamat" cols="30" rows="10"><?= $data['alamat_dokter'] ?></textarea>
                          </div>
                     </div>
                     <div class="row marginku">

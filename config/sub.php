@@ -8,7 +8,8 @@ $data = mysqli_fetch_array($sql);
 
 $data = array(
     'nama' =>  $data['nama_sub'],
-    'id_sub' => $data['id_sub']
+    'id_sub' => $data['id_sub'],
+    'nid' => $data['NID']
     );
 
 //tampil data

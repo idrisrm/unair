@@ -29,7 +29,9 @@ $data1 = mysqli_fetch_array($ambildata);
                               <select name="jenis_biaya" class="form-control" required>
                                    <option value="" selected>-- Pilih Salah Satu --</option>
                                    <option value="1" <?= $data1['jenis_biaya'] == 1 ? "selected" : "" ?>>Biaya Pemeriksaan</option>
-                                   <option value="2" <?= $data1['jenis_biaya'] == 2 ? "selected" : "" ?>>Biaya Inap</option>
+                                   <option value="2" <?= $data1['jenis_biaya'] == 2 ? "selected" : "" ?>>Biaya Apotek</option>
+                                   <option value="3" <?= $data1['jenis_biaya'] == 3 ? "selected" : "" ?>>Biaya Rawat Inap</option>
+                                   <option value="4" <?= $data1['jenis_biaya'] == 4 ? "selected" : "" ?>>Biaya Resep Kacamata</option>
                               </select>
                          </div>
                          <div class="col-md-6 marginku">

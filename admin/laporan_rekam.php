@@ -44,13 +44,13 @@ $tahun = $_POST['tahun'];
         <tr>
             <td align="center"><img src="../img/1.png" height="115" /></td>
             <td>
-                <div align="center">
+            <div align="center">
                     <font size="5"><b>UNIVERSITAS AIRLANGGA SURABAYA</b></font><br>
-                    <div align="center">Jl. Raya Porong No.1 Sidoarjo, Jawa Timur 61274<br>
-                        Website : www.unair.com Email : unair@gmail.com
+                    <div align="center">Jl. Dr. Ir. H. Soekarno, Mulyorejo, Kec. Mulyorejo, Kota SBY, Jawa Timur 60115<br>
+                        Website : www.unair.ac.id
                     </div>
                     <div align="center">
-                        Telepon : (0343) 856444 / (0343) 853080 Fax. : (0343) 850920
+                        Telepon : +62-031-5914042 / 5914043 / 5915551
                     </div>
             </td>
             <div style="clear:both" />
@@ -65,7 +65,7 @@ $tahun = $_POST['tahun'];
         <tr>
             <td colspan="5">
                 <div align="center">
-                    <font size="4"><b>Rekam Medis Karyawan Periode <?= $bulan?>/<?= $tahun?></b></font>
+                    <font size="4"><b>Rekam Medis Karyawan Periode <?= date('F', mktime(0, 0, 0, $bulan, 10)); ?> <?= $tahun ?></b></font>
                 </div>
             </td>
         </tr>
@@ -119,7 +119,7 @@ $tahun = $_POST['tahun'];
             ?>
                 <tr>
                     <th style="text-align: center;" scope="row"><?= $no ?></th>
-                    <td align="center"><?= $data['id_pasien'] ?></td>
+                    <td align="center"><?= $data['NID'] ?></td>
                     <td align="center"><?= $data['nama_sub'] ?></td>
                     <td align="center"><?= $data['nama_karyawan'] ?></td>
                     <td align="center"><?= $data['nama_dokter'] ?></td>
@@ -131,7 +131,7 @@ $tahun = $_POST['tahun'];
             } ?>
             <!-- <tr>
                 <th style="text-align: center;" scope="row" colspan="4">Total</th>
-                <td align="center">Rp. <?= number_format($datatotal['biaya'],0,",",".") ?></td>
+                <td align="center">Rp. <?= number_format($datatotal['biaya'], 0, ",", ".") ?></td>
             </tr> -->
         </tbody>
     </table>

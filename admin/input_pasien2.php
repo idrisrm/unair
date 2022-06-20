@@ -49,7 +49,7 @@ $data = mysqli_fetch_array($ambildata);
                          </div>
                          <div class="col-md-3 marginku">
                               <label>Jenis Penggantian</label>
-                              <input class="form-control" type="text" name="tanggal_input" value="<?= $data['jenis_penggantian'] == 1 ? "Perorangan" : "Fasilitas Kantor" ?>" required readonly>
+                              <input class="form-control" type="text" name="tanggal_input" value="<?= $data['jenis_penggantian'] == 1 ? "Perorangan" : "Tagihan Pihak Ketiga" ?>" required readonly>
                          </div>
                          <div class="col-md-2 marginku">
                               <label>Unit Sub</label>
@@ -60,6 +60,8 @@ $data = mysqli_fetch_array($ambildata);
                               <input class="form-control" type="text" value="<?= $data['nama_karyawan'] ?>" name="id_sub" required readonly>
                          </div>
                     </div>
+
+
                     <div class="row">
                          <div class="col-md-11 marginku">
                               <label>Uraian</label>
@@ -70,6 +72,14 @@ $data = mysqli_fetch_array($ambildata);
                               <input class="form-control" placeholder="Enter Number" value="<?= $data['jumlah_item'] ?>" type="number" name="jumlah_item" required readonly>
                          </div>
                     </div>
+                    <?php if ($data['jenis_penggantian'] == 2) { ?>
+                         <div class="row">
+                              <div class="col-md-12 marginku">
+                                   <label>Nomor Rekening Pihak Ketiga</label>
+                                   <input class="form-control" placeholder="Enter Text" type="number" value="<?= $data['rekening'] ?>" name="rekening" required readonly>
+                              </div>
+                         </div>
+                    <?php } ?>
                     <!-- Modal -->
                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                          <div class="modal-dialog" role="document">
@@ -89,7 +99,9 @@ $data = mysqli_fetch_array($ambildata);
                                                   <select name="jenis_biaya" class="form-control" required>
                                                        <option value="" selected>-- Pilih Salah Satu --</option>
                                                        <option value="1">Biaya Pemeriksaan</option>
-                                                       <option value="2">Biaya Inap</option>
+                                                       <option value="2">Biaya Apotek</option>
+                                                       <option value="3">Biaya Rawat Inap</option>
+                                                       <option value="4">Biaya Resep Kacamata</option>
                                                   </select>
                                              </div>
                                              <div class="col-md-6 marginku">
@@ -167,6 +179,7 @@ $data = mysqli_fetch_array($ambildata);
                               <th>Tanggal</th>
                               <th>Pasien</th>
                               <th>Uraian</th>
+                              <th>Diagnosa</th>
                               <th>Biaya</th>
                               <th>Aksi</th>
                          </tr>
@@ -178,15 +191,26 @@ $data = mysqli_fetch_array($ambildata);
                          while ($data2 = mysqli_fetch_array($ambildata2)) { ?>
                               <tr>
                                    <td><?= $no ?></td>
-                                   <td><?= $data2['jenis_biaya'] == 1 ? "Periksa" : "Rawat Inap" ?></td>
+                                   <td>
+                                        <?php if ($data2['jenis_biaya'] == 1) {
+                                             echo 'Biaya Pemeriksaan';
+                                        } else if ($data2['jenis_biaya'] == 2) {
+                                             echo 'Biaya Apotek';
+                                        } elseif ($data2['jenis_biaya'] == 3) {
+                                             echo 'Biaya Rawat Inap';
+                                        } elseif ($data2['jenis_biaya'] == 4) {
+                                             echo 'Biaya Resep Kacamata';
+                                        } ?>
+                                   </td>
                                    <td><?= $data2['tanggal_periksa'] ?></td>
                                    <td><?= $data2['nama_karyawan'] ?></td>
                                    <td><?= $data2['uraian'] ?></td>
-                                   <td>Rp. <?= $data2['biaya'] ?></td>
+                                   <td><?= $data2['diagnosa'] ?></td>
+                                   <td>Rp. <?= number_format($data2['biaya'], 0, ",", ".") ?></td>
                                    <td>
                                         <a href="?menu=editPasien&id=<?= $data2['id_detail'] ?>">
                                              <i class="glyphicon glyphicon-edit"></i></a>
-                                        <a href="" onclick="confirm_modal('../config/hapuspasien.php?id=<?= $data2['id_detail']?>&nomor=<?= $data2['nomor_pasien']?> ')" data-toggle="modal" data-target="#modalDelete">
+                                        <a href="" onclick="confirm_modal('../config/hapuspasien.php?id=<?= $data2['id_detail'] ?>&nomor=<?= $data2['nomor_pasien'] ?> ')" data-toggle="modal" data-target="#modalDelete">
                                              <i class="glyphicon glyphicon-trash" style="color:#FF0000"></i></a>
                                    </td>
                               </tr>
@@ -199,7 +223,7 @@ $data = mysqli_fetch_array($ambildata);
                     <div class="col-lg-12">
                          <!-- <a class="btn btn-primary" href="">Simpan</a> -->
                          <a class="btn btn-primary" href="?menu=resi&id=<?= $id ?>">Cetak Dokumen</a>
-                         <a href="" class="btn btn-danger" onclick="confirm_modal1('../config/hapusdokumen.php?nomor=<?= $id?>')" data-toggle="modal" data-target="#modalDelete1" >Hapus Dokumen</a>
+                         <a href="" class="btn btn-danger" onclick="confirm_modal1('../config/hapusdokumen.php?nomor=<?= $id ?>')" data-toggle="modal" data-target="#modalDelete1">Hapus Dokumen</a>
                          <a class="btn btn-success" href="?menu=pasien">Selesai</a>
                     </div>
                </div>

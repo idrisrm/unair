@@ -13,7 +13,7 @@
 <div class="panel-body" style="background-color: #f5f5f5; border-radius: 10px;">
      <div class="row">
           <div class="col-lg-12">
-               <form method="POST" action="../config/insertrekammedis.php">
+               <form method="POST" action="../config/insertrekammedis.php" enctype="multipart/form-data">
                     <div class="row">
                          <div class="col-md-4 marginku">
                               <label>Nama Pasien</label>
@@ -44,22 +44,25 @@
                          </div>
                     </div>
                     <div class="row">
-                         <div class="col-md-6 marginku">
+                         <div class="col-md-4 marginku">
                               <label>Umur</label>
                               <input class="form-control" type="number" placeholder="Enter text" name="umur" required>
                          </div>
-                         <div class="col-md-6 marginku">
+                         <div class="col-md-4 marginku">
                               <label>Terapi</label>
                               <input class="form-control" placeholder="Enter text" name="terapi" required>
                          </div>
-                    </div>
-                    <div class="row">
-                         <div class="col-md-12 marginku">
-                              <label>Diagnosa</label>
-                              <!-- <input class="form-control" placeholder="Enter text" name="umur" required> -->
-                              <textarea class="form-control" name="diagnosa" cols="30" rows="10" required></textarea>
+                         <div class="col-md-4 marginku">
+                              <label>Kwitansi</label>
+                              <input class="form-control" type="file" name="kwitansi" required>
                          </div>
                     </div>
+                    <!-- <div class="row">
+                         <div class="col-md-12 marginku">
+                              <label>Diagnosa</label>
+                              <textarea class="form-control" name="diagnosa" cols="30" rows="10" required></textarea>
+                         </div>
+                    </div> -->
                     <div class="row marginku">
                          <div class="col-lg-12">
                               <button type="submit" class="btn btn-primary" name="kirim">Submit</button>
